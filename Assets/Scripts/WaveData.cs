@@ -1,8 +1,9 @@
 using UnityEngine;
+using System;
+using System.Collections.Generic;
 
 [System.Serializable]
-
-public class WaveData
+public class EnemyData
 {
     [SerializeField] private GameObject _enemyPrefab;
     [SerializeField] private int _enemyCount;
@@ -21,5 +22,16 @@ public class WaveData
     public float GetEnemySpawnRate()
     {
         return _spawnRate;
+    }
+}
+
+[System.Serializable]
+public class WaveData
+{
+    [SerializeField] private List<EnemyData> _enemyDataList;
+
+    public List<EnemyData> GetEnemyDataList()
+    {
+        return _enemyDataList;
     }
 }

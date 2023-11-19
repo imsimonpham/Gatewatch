@@ -1,34 +1,47 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
-    private GameObject _spawnPoint;
+    private GameObject _groundSpawnPoint;
     private GameObject _endPoint;
+    private GameObject _airSpawnPoint;
     [SerializeField] private NavMeshAgent _agent;
     private WaveSpawner _waveSpawner;
+    private string _groundEnemyTag = "GroundEnemy";
+    private string _airEnemyTag = "AirEnemy";
+    private string _endPointTag = "EndPoint";
+    private Vector3 dir;
     
     void Start()
     {
         //Cache Components
-        _spawnPoint = GameObject.Find("SpawnPoint");
-        if (_spawnPoint == null)
+        _groundSpawnPoint = GameObject.Find("GroundSpawnPoint");
+        if (_groundSpawnPoint == null)
         {
-            Debug.LogError("Spawn Point is null");
+            Debug.LogError("Ground Spawn Point is null");
         }
+
         _endPoint = GameObject.Find("EndPoint");
         if (_endPoint == null)
         {
             Debug.LogError("End Point is null");
         }
-
+        
+        _airSpawnPoint = GameObject.Find("AirSpawnPoint");
+        if (_airSpawnPoint == null)
+        {
+            Debug.LogError("Air Spawn Point is null");
+        }
+        
         _waveSpawner = GameObject.Find("WaveSpawner").GetComponent<WaveSpawner>();
         if (_waveSpawner == null)
         {
             Debug.LogError("Wave Spawner is null");
         }
         
-        transform.position = _spawnPoint.transform.position;
+        //transform.position = _groundSpawnPoint.transform.position;
     }
 
     void Update()
@@ -39,12 +52,13 @@ public class EnemyMovement : MonoBehaviour
     void MoveToEndPoint()
     {
         _agent.SetDestination(_endPoint.transform.position);
-
-        Vector3 dir = _endPoint.transform.position - transform.position;
-        if (dir.magnitude <= 0.1f)
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag(_endPointTag))
         {
-            Destroy(gameObject);
             _waveSpawner.ReduceEnemiesAlive();
+            Destroy(gameObject);
         }
     }
 }
