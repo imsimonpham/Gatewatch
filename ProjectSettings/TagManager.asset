@@ -14,14 +14,14 @@ TagManager:
   - 
   - Water
   - UI
-  - WalkPath
+  - 
   - GroundEnemy
-  - FlyPath
-  - 
-  - 
-  - 
-  - 
-  - 
+  - WalkPath 1
+  - WalkPath 2
+  - WalkPath 3
+  - FlyPath 1
+  - FlyPath 2
+  - FlyPath 3
   - 
   - 
   - 
