@@ -1,24 +1,25 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.AI;
 
 [System.Serializable]
 public class EnemyData
 {
-    public enum Path
+    public enum PathType
     {
         Path1, 
         Path2, 
         Path3
     }
-    [SerializeField] private Path _path;
-    
+    [SerializeField] private PathType _enemyPath;
     [SerializeField] private GameObject _enemyPrefab;
     [SerializeField] private int _enemyCount;
-    [SerializeField] private float _spawnRate;
+    [SerializeField]  [Range(1f, 10f)] private float _enemySpawnRate;
+    private NavMeshAgent _enemyAgent;
     
-    public Path GetEnemyPath()
+    public PathType GetEnemyPath()
     {
-        return _path;
+        return _enemyPath;
     }
     
     public GameObject GetEnemyPrefab()
@@ -33,7 +34,12 @@ public class EnemyData
 
     public float GetEnemySpawnRate()
     {
-        return _spawnRate;
+        return _enemySpawnRate;
+    }
+
+    public NavMeshAgent GetEnemyAgent()
+    {
+        return _enemyAgent = _enemyPrefab.GetComponent<NavMeshAgent>();
     }
 }
 

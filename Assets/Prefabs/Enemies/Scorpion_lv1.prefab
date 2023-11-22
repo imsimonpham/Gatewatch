@@ -1106,7 +1106,7 @@ Transform:
   m_GameObject: {fileID: 6523849301070266614}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2142266806012106626}
@@ -1117,7 +1117,7 @@ Transform:
   - {fileID: 6239693563101957644}
   - {fileID: 6515275682302604350}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2280076513939722573
 Animator:
@@ -1150,7 +1150,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.6
-  m_Speed: 3
+  m_Speed: 10
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 150
@@ -1187,6 +1187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75f40dd73527a42498a11afc5351dd65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyIndex: 0
 --- !u!65 &4464245260454350308
 BoxCollider:
   m_ObjectHideFlags: 0

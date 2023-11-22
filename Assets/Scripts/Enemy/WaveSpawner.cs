@@ -5,31 +5,47 @@ using TMPro;
 public class WaveSpawner : MonoBehaviour
 {
     [SerializeField] private WaveData[] _waveData;
-    [SerializeField] private GameObject _groundSpawnPoint;
-    [SerializeField] private GameObject _airSpawnPoint;
     [SerializeField] private GameObject _enemyContainer;
     [SerializeField] private float _timeBetweenWaves = 5f;
     [SerializeField] private float _countdown = 3f;
-
+ 
     private int _waveIndex;
-    private int _enemiesAlivePerWave;
     private int _enemyIndex;
+    private bool _waveIsSkipped = false;
+    private int _enemiesAlivePerWave;
     private string _groundEnemyTag = "GroundEnemy";
     private string _airEnemyTag = "AirEnemy";
 
     [SerializeField] private GamePlayUI _gamePlayUI;
-
+    
+    //Paths
+    [SerializeField] private GameObject _groundSpawnPoint_1;
+    [SerializeField] private GameObject _groundSpawnPoint_2;
+    [SerializeField] private GameObject _groundSpawnPoint_3;
+    [SerializeField] private GameObject _airSpawnPoint_1;
+    [SerializeField] private GameObject _airSpawnPoint_2;
+    [SerializeField] private GameObject _airSpawnPoint_3;
+    [SerializeField] private GameObject _endPoint_1;
+    [SerializeField] private GameObject _endPoint_2;
+    [SerializeField] private GameObject _endPoint_3;
+    
     void Start()
     {
-        _enemyIndex = 0;
         _waveIndex = 0;
+        _enemyIndex = 0;
     }
 
     void Update()
     {
+        if (_waveIsSkipped)
+        {
+            _countdown = 0;
+        }
+        
         if (_countdown <= 0f)
         {
             StartCoroutine(SpawnWave());
+            _waveIsSkipped = false;
             _countdown = _timeBetweenWaves;
             return;
         }
@@ -49,39 +65,70 @@ public class WaveSpawner : MonoBehaviour
         {
             for (int i = 0; i < enemyData.GetEnemyCount(); i++)
             {
-                SpawnEnemy(enemyData.GetEnemyPrefab());
+                GameObject enemyPrefab = enemyData.GetEnemyPrefab();
+                string enemyPath = enemyData.GetEnemyPath().ToString();
+                GameObject spawnPoint;
+                GameObject endPoint;
+                if (enemyPrefab.CompareTag(_groundEnemyTag))
+                {
+                    if (enemyPath == "Path1")
+                    {
+                        spawnPoint = _groundSpawnPoint_1;
+                        endPoint = _endPoint_1;
+                    } else if (enemyPath == "Path2")
+                    {
+                        spawnPoint = _groundSpawnPoint_2;
+                        endPoint = _endPoint_2;
+                    }
+                    else
+                    {
+                        spawnPoint = _groundSpawnPoint_3;
+                        endPoint = _endPoint_3;
+                    }
+                }
+                else
+                {
+                    if (enemyPath == "Path1")
+                    {
+                        spawnPoint = _airSpawnPoint_1;
+                        endPoint = _endPoint_1;
+                    } else if (enemyPath == "Path2")
+                    {
+                        spawnPoint = _airSpawnPoint_2;
+                        endPoint = _endPoint_2;
+                    }
+                    else
+                    {
+                        spawnPoint = _airSpawnPoint_3;
+                        endPoint = _endPoint_3;
+                    }
+                }
+                //spawn
+                SpawnEnemy(enemyData.GetEnemyPrefab(), spawnPoint, endPoint);
                 yield return new WaitForSeconds(1f / enemyData.GetEnemySpawnRate());
             }
         }
     }
 
-    void SpawnEnemy(GameObject enemyPrefab)
+    void SpawnEnemy(GameObject enemyPrefab, GameObject spawnPoint, GameObject endPoint)
     {
-        if (enemyPrefab.CompareTag(_groundEnemyTag))
+        //Get the spawn rotation in the opposite direction of the spawn point
+        Quaternion spawnRotation = Quaternion.Euler(0f, spawnPoint.transform.rotation.eulerAngles.y - 180f, 0f);
+            
+        //Get a random x and z position within the portal 
+        float x = Random.Range(spawnPoint.transform.position.x - 3f, spawnPoint.transform.position.x + 3f);
+        float z = Random.Range(spawnPoint.transform.position.z - 3f, spawnPoint.transform.position.z + 3f);
+        Vector3 spawnPos = new Vector3(x, spawnPoint.transform.position.y, z);
+            
+        Enemy enemy = Instantiate(enemyPrefab,spawnPos, spawnRotation).GetComponent<Enemy>();
+        enemy.SetEnemyIndex(_enemyIndex);
+        enemy.transform.parent = _enemyContainer.transform;
+        
+        //enemy move to endpoint
+        EnemyMovement enemyMovement = enemy.gameObject.GetComponent<EnemyMovement>();
+        if (enemyMovement != null)
         {
-            //Get the spawn rotation in the opposite direction of the spawn point
-            Quaternion spawnRotation = Quaternion.Euler(0f, _groundSpawnPoint.transform.rotation.eulerAngles.y - 180f, 0f);
-            
-            //Get a random x and z position within the portal 
-            float x = Random.Range(_groundSpawnPoint.transform.position.x - 3f, _groundSpawnPoint.transform.position.x + 3f);
-            float z = Random.Range(_groundSpawnPoint.transform.position.z - 3f, _groundSpawnPoint.transform.position.z + 3f);
-            Vector3 spawnPos = new Vector3(x, _groundSpawnPoint.transform.position.y, z);
-            
-            Enemy enemy = Instantiate(enemyPrefab,spawnPos, spawnRotation).GetComponent<Enemy>();
-            enemy.transform.parent = _enemyContainer.transform;
-        }
-        else
-        {
-            //Get the spawn rotation in the opposite direction of the spawn point
-            Quaternion spawnRotation = Quaternion.Euler(0f, _airSpawnPoint.transform.rotation.eulerAngles.y - 180f, 0f);
-            
-            //Get a random x and z position within the portal
-            float x = Random.Range(_airSpawnPoint.transform.position.x - 3f, _airSpawnPoint.transform.position.x + 3f);
-            float z = Random.Range(_airSpawnPoint.transform.position.z - 3f, _airSpawnPoint.transform.position.z + 3f);
-            Vector3 spawnPos = new Vector3(x, _airSpawnPoint.transform.position.y, z);
-            
-            Enemy enemy = Instantiate(enemyPrefab, spawnPos, spawnRotation).GetComponent<Enemy>();
-            enemy.transform.parent = _enemyContainer.transform;
+            enemyMovement.MoveToEndPoint(endPoint);
         }
         _enemyIndex++;
         _enemiesAlivePerWave++;
@@ -90,5 +137,10 @@ public class WaveSpawner : MonoBehaviour
     public void ReduceEnemiesAlive()
     {
         _enemiesAlivePerWave--;
+    }
+
+    public void SkipWave()
+    {
+        _waveIsSkipped = true;
     }
 }
