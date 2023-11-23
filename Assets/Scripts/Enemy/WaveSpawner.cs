@@ -9,12 +9,14 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private float _timeBetweenWaves = 5f;
     [SerializeField] private float _countdown = 3f;
  
-    private int _waveIndex;
+    [SerializeField] private int _waveIndex;
     private int _enemyIndex;
     private bool _waveIsSkipped = false;
     private int _enemiesAlivePerWave;
     private string _groundEnemyTag = "GroundEnemy";
     private string _airEnemyTag = "AirEnemy";
+    private GameObject spawnPoint;
+    private GameObject endPoint;
 
     [SerializeField] private GamePlayUI _gamePlayUI;
     
@@ -37,15 +39,15 @@ public class WaveSpawner : MonoBehaviour
 
     void Update()
     {
-        if (_waveIsSkipped)
+        /*if (_waveIsSkipped)
         {
             _countdown = 0;
-        }
+            _waveIsSkipped = false;
+        }*/
         
         if (_countdown <= 0f)
         {
             StartCoroutine(SpawnWave());
-            _waveIsSkipped = false;
             _countdown = _timeBetweenWaves;
             return;
         }
@@ -60,27 +62,36 @@ public class WaveSpawner : MonoBehaviour
     IEnumerator SpawnWave()
     {
         WaveData waveData = _waveData[_waveIndex];
-        _waveIndex++;
         foreach (EnemyData enemyData in waveData.GetEnemyDataList())
         {
             for (int i = 0; i < enemyData.GetEnemyCount(); i++)
             {
                 GameObject enemyPrefab = enemyData.GetEnemyPrefab();
                 string enemyPath = enemyData.GetEnemyPath().ToString();
-                GameObject spawnPoint;
-                GameObject endPoint;
+                float enemySpawnRate = enemyData.GetEnemySpawnRate();
+                
+                //safeguard against spawn rate = 0
+                if (enemySpawnRate <= 0)
+                {
+                    enemySpawnRate = 1f;
+                }
+                else
+                {
+                    enemySpawnRate = enemyData.GetEnemySpawnRate();
+                }
+                
                 if (enemyPrefab.CompareTag(_groundEnemyTag))
                 {
-                    if (enemyPath == "Path1")
+                    if (enemyPath == "Path1" && _groundSpawnPoint_1 != null && _endPoint_1 != null)
                     {
                         spawnPoint = _groundSpawnPoint_1;
                         endPoint = _endPoint_1;
-                    } else if (enemyPath == "Path2")
-                    {
+                    } else if (enemyPath == "Path2" && _groundSpawnPoint_2 != null && _endPoint_2 != null)
+                    { 
                         spawnPoint = _groundSpawnPoint_2;
                         endPoint = _endPoint_2;
                     }
-                    else
+                    else if(enemyPath == "Path3" && _groundSpawnPoint_3 != null && _endPoint_3 != null)
                     {
                         spawnPoint = _groundSpawnPoint_3;
                         endPoint = _endPoint_3;
@@ -88,16 +99,16 @@ public class WaveSpawner : MonoBehaviour
                 }
                 else
                 {
-                    if (enemyPath == "Path1")
+                    if (enemyPath == "Path1" && _groundSpawnPoint_1 != null && _endPoint_1 != null)
                     {
                         spawnPoint = _airSpawnPoint_1;
                         endPoint = _endPoint_1;
-                    } else if (enemyPath == "Path2")
+                    } else if (enemyPath == "Path2" && _groundSpawnPoint_2 != null && _endPoint_2 != null)
                     {
                         spawnPoint = _airSpawnPoint_2;
                         endPoint = _endPoint_2;
                     }
-                    else
+                    else if(enemyPath == "Path3" && _groundSpawnPoint_3 != null && _endPoint_3 != null)
                     {
                         spawnPoint = _airSpawnPoint_3;
                         endPoint = _endPoint_3;
@@ -105,9 +116,10 @@ public class WaveSpawner : MonoBehaviour
                 }
                 //spawn
                 SpawnEnemy(enemyData.GetEnemyPrefab(), spawnPoint, endPoint);
-                yield return new WaitForSeconds(1f / enemyData.GetEnemySpawnRate());
+                yield return new WaitForSeconds(enemySpawnRate);
             }
         }
+        _waveIndex++;
     }
 
     void SpawnEnemy(GameObject enemyPrefab, GameObject spawnPoint, GameObject endPoint)
