@@ -79,6 +79,7 @@ public class WaveSpawner : MonoBehaviour
                 {
                     enemySpawnRate = enemyData.GetEnemySpawnRate();
                 }
+                //Debug.Log(enemySpawnRate);
                 
                 if (enemyPrefab.CompareTag(_groundEnemyTag))
                 {

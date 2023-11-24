@@ -7,6 +7,9 @@ TagManager:
   - GroundEnemy
   - AirEnemy
   - EndPoint
+  - BuildManager
+  - TowerBase
+  - Mesh
   layers:
   - Default
   - TransparentFX
@@ -16,8 +19,8 @@ TagManager:
   - UI
   - Walk Path
   - Fly Path
-  - 
-  - 
+  - Ground
+  - Base
   - 
   - 
   - 

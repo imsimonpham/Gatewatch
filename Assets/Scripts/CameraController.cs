@@ -22,19 +22,19 @@ public class CameraController : MonoBehaviour
       Vector3 camPos = transform.position;
       
       //camera movement
-      if (Input.GetKey("w") || (Input.mousePosition.y >= Screen.height - _panBorderThickness && Input.GetKey(KeyCode.Mouse1)))
+      if (Input.GetKey("w") || (Input.mousePosition.y >= Screen.height - _panBorderThickness && Input.GetKey(KeyCode.Mouse2)))
       {
          camPos.z += _panSpeed * Time.deltaTime;
       }
-      if (Input.GetKey("s") || (Input.mousePosition.y <=  _panBorderThickness && Input.GetKey(KeyCode.Mouse1)))
+      if (Input.GetKey("s") || (Input.mousePosition.y <=  _panBorderThickness && Input.GetKey(KeyCode.Mouse2)))
       {
          camPos.z -= _panSpeed * Time.deltaTime;
       }
-      if (Input.GetKey("a") || (Input.mousePosition.x <= _panBorderThickness && Input.GetKey(KeyCode.Mouse1)))
+      if (Input.GetKey("a") || (Input.mousePosition.x <= _panBorderThickness && Input.GetKey(KeyCode.Mouse2)))
       {
          camPos.x -= _panSpeed * Time.deltaTime;
       }
-      if (Input.GetKey("d") || (Input.mousePosition.x >= Screen.width - _panBorderThickness && Input.GetKey(KeyCode.Mouse1)))
+      if (Input.GetKey("d") || (Input.mousePosition.x >= Screen.width - _panBorderThickness && Input.GetKey(KeyCode.Mouse2)))
       {
          camPos.x += _panSpeed * Time.deltaTime;
       }

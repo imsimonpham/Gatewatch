@@ -8,4 +8,8 @@ public class Enemy : MonoBehaviour
     {
         _enemyIndex = index;
     }
+    public int GetEnemyIndex()
+    {
+        return _enemyIndex;
+    }
 }
