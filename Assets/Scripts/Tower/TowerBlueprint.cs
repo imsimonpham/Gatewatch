@@ -14,6 +14,8 @@ public class TowerBlueprint
     [SerializeField] private int _upgradeCostToLv2;
     [SerializeField] private int _upgradeCostToLv3;
     
+    
+    
     //Prefabs
     public GameObject GetPrefabLv1()
     {
@@ -26,6 +28,11 @@ public class TowerBlueprint
     public GameObject GetPrefabLv3()
     {
         return _prefabLv3;
+    }
+
+    public GameObject GetTowerghost()
+    {
+        return _prefabGhost;
     }
     
     //Player gains half of the build cost + half of the upgrade cost to that level. 
@@ -44,5 +51,7 @@ public class TowerBlueprint
     {
         return _upgradeCostToLv3;
     }
+    
+    //others
     
 }

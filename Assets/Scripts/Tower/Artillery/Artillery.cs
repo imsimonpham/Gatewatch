@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AntiAircrafter : MonoBehaviour
+public class Artillery : MonoBehaviour
 {
     [SerializeField] private GameObject _target;
     [SerializeField] private float _range = 15f;

@@ -10,6 +10,12 @@ TagManager:
   - BuildManager
   - TowerBase
   - Mesh
+  - PlayerStats
+  - GamePlayUI
+  - EnermyContainer
+  - BulletContainer
+  - GameManager
+  - WaveSpawner
   layers:
   - Default
   - TransparentFX

@@ -1,17 +1,18 @@
 using UnityEngine;
-using System.Collections;
 
 public class TowerGhost : MonoBehaviour
 {
-   [SerializeField] private Camera _mainCam;
+   private Camera _mainCam;
    [SerializeField] private LayerMask _layerMask;
    [SerializeField] private Material _blueMat;
    [SerializeField] private Material _redMat;
    private GameObject[] _meshObjects;
+   
 
    void Start()
    {
       _meshObjects = GetChildrenWithTag("Mesh");
+      _mainCam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
    }
    void Update()
    {
@@ -20,6 +21,7 @@ public class TowerGhost : MonoBehaviour
       {
          transform.position = raycastHit.point;
          int hitLayer = raycastHit.collider.gameObject.layer;
+         
          // Check if the hit layer is the "Ground" layer
          if (LayerMask.LayerToName(hitLayer) == "Ground")
          {
@@ -29,6 +31,10 @@ public class TowerGhost : MonoBehaviour
             TurnColorToBlue();
          }
       }
+      else
+      {
+         TurnInvisible();
+      }
    }
 
    void TurnColorToBlue()
@@ -36,9 +42,12 @@ public class TowerGhost : MonoBehaviour
       foreach (GameObject meshObject in _meshObjects)
       {
          Renderer renderer = meshObject.GetComponent<Renderer>();
+         if (!renderer.enabled)
+         {
+            renderer.enabled = true;
+         }
          if (renderer != null)
          {
-            // Replace the material with the newMaterial
             renderer.material = _blueMat;
          }
       }
@@ -49,10 +58,25 @@ public class TowerGhost : MonoBehaviour
       foreach (GameObject meshObject in _meshObjects)
       {
          Renderer renderer = meshObject.GetComponent<Renderer>();
+         if (!renderer.enabled)
+         {
+            renderer.enabled = true;
+         }
          if (renderer != null)
          {
-            // Replace the material with the newMaterial
             renderer.material = _redMat;
+         }
+      }
+   }
+
+   void TurnInvisible()
+   {
+      foreach (GameObject meshObject in _meshObjects)
+      {
+         Renderer renderer = meshObject.GetComponent<Renderer>();
+         if (renderer != null)
+         {
+            renderer.enabled = false;
          }
       }
    }

@@ -62,6 +62,7 @@ public class WaveSpawner : MonoBehaviour
     IEnumerator SpawnWave()
     {
         WaveData waveData = _waveData[_waveIndex];
+        _gamePlayUI.UpdateWaveText(_waveIndex + 1, _waveData.Length);
         foreach (EnemyData enemyData in waveData.GetEnemyDataList())
         {
             for (int i = 0; i < enemyData.GetEnemyCount(); i++)

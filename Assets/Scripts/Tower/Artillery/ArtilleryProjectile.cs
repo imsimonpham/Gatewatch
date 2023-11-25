@@ -1,9 +1,9 @@
-using System;
 using UnityEngine;
 
-public class AntiAircrafterProjectile : MonoBehaviour
+public class ArtilleryProjectile : MonoBehaviour
 {
     [SerializeField] private float _speed = 50f;
+    [SerializeField] private float _dmg = 2f;
     private GameObject _target;
     [SerializeField] private GameObject _hitImpactPrefab;
     private string _airEnemyTag = "AirEnemy";
@@ -30,7 +30,8 @@ public class AntiAircrafterProjectile : MonoBehaviour
     {
         if (other.gameObject.CompareTag(_airEnemyTag) || other.gameObject.CompareTag(_groundEnemyTag))
         {
-            //Destroy(other.gameObject);
+            Enemy enemy = other.GetComponent<Enemy>();
+            enemy.TakeDamage(_dmg);
             Destroy(gameObject);
         }
     }

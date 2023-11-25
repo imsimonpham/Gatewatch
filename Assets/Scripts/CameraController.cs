@@ -15,11 +15,14 @@ public class CameraController : MonoBehaviour
    [SerializeField] private MinMaxRange _panLimitX;
    [SerializeField] private MinMaxRange _panLimitZ;
    [SerializeField] private MinMaxRange _zoomLimit;
+   [SerializeField] private MinMaxRange _rotationLimit;
+   
    
    //mouse's origin position is at the bottom of the screen 
    void Update()
    {
-      Vector3 camPos = transform.position;
+      Vector3 camPos = transform.position; // transform.position is Vector3
+      Vector3 camRot = transform.rotation.eulerAngles; //convert transform.rotation (Quaternion) to Vector3
       
       //camera movement
       if (Input.GetKey("w") || (Input.mousePosition.y >= Screen.height - _panBorderThickness && Input.GetKey(KeyCode.Mouse2)))
@@ -42,13 +45,16 @@ public class CameraController : MonoBehaviour
       //zoom in and out
       float scroll = Input.GetAxis("Mouse ScrollWheel");
       camPos.y -= scroll * _scrollSpeed * Time.deltaTime;
+      camRot.x -= scroll * _scrollSpeed * Time.deltaTime;
       
-      //limit camera's movement range and zoom
+      //limit camera's movement range and zoom and rotation
       camPos.x = Mathf.Clamp(camPos.x, _panLimitX.min, _panLimitX.max);
       camPos.z = Mathf.Clamp(camPos.z, _panLimitZ.min, _panLimitZ.max);
       camPos.y = Mathf.Clamp(camPos.y, _zoomLimit.min, _zoomLimit.max);
+      camRot.x = Mathf.Clamp(camRot.x, _rotationLimit.min, _rotationLimit.max);
       
-      //update camera's position
+      //update camera's position and rotation
       transform.position = camPos;
+      transform.rotation = Quaternion.Euler(camRot);
    }
 }

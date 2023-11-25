@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 2121304925165075767}
   - component: {fileID: 2711813441260698063}
   m_Layer: 0
-  m_Name: AntiAir_1
+  m_Name: Artillery_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

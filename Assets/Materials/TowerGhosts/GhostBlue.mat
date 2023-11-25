@@ -23,7 +23,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AntiAir_GhostRed
+  m_Name: GhostBlue
   m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -257,14 +257,14 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.7921569, g: 0.25535786, b: 0.2117647, a: 1}
+    - _BaseColor: {r: 0.2117647, g: 0.5936392, b: 0.7921569, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 0.7921569, g: 0.25535783, b: 0.21176466, a: 1}
+    - _Color: {r: 0.21176466, g: 0.59363914, b: 0.7921569, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissiveColor: {r: 0.5775805, g: 0.0511685, b: 0.034339797, a: 1}
-    - _EmissiveColorLDR: {r: 0.78431374, g: 0.2507292, b: 0.20392157, a: 1}
+    - _EmissiveColor: {r: 0.034092084, g: 0.1922707, b: 0.5754442, a: 1}
+    - _EmissiveColorLDR: {r: 0.2031417, g: 0.4757414, b: 0.7830189, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}

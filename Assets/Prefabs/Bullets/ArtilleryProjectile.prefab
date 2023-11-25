@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 327605563107099846}
   - component: {fileID: 674557134221344986}
   m_Layer: 0
-  m_Name: AntiAircrafterProjectile
+  m_Name: ArtilleryProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,7 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9294f78524b038f48899dd2b361b408b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 25
+  _speed: 30
+  _dmg: 3
   _hitImpactPrefab: {fileID: 0}
 --- !u!96 &674557134221344986
 TrailRenderer:
@@ -163,7 +164,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.5
+  m_Time: 0.1
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3

@@ -10,6 +10,8 @@ public class TowerBase : MonoBehaviour
    [SerializeField] private GameObject _existingTower;
    private TowerBlueprint _towerBlueprint;
    private BuildManager _buildManager;
+   private PlayerStats _playerStats;
+   private GamePlayUI _gamePlayUI;
 
    void Start()
    {
@@ -22,14 +24,21 @@ public class TowerBase : MonoBehaviour
       {
          Debug.LogError("Build Manager is null");
       }
+      _playerStats = GameObject.FindWithTag("PlayerStats").GetComponent<PlayerStats>();
+      if (_playerStats == null)
+      {
+         Debug.LogError("Player Stats is null");
+      }
+      _gamePlayUI = GameObject.FindWithTag("GamePlayUI").GetComponent<GamePlayUI>();
+      if (_gamePlayUI == null)
+      {
+         Debug.LogError("Gameplay UI is null");
+      }
    }
 
    void Update()
    {
-      if (Input.GetKey(KeyCode.Mouse1))
-      {
-         _buildManager.ClearTowerToBuld();
-      }
+     
    }
 
    void OnMouseDown()
@@ -51,6 +60,7 @@ public class TowerBase : MonoBehaviour
    void BuildTower(TowerBlueprint towerBlueprint)
    {
       GameObject tower = Instantiate(towerBlueprint.GetPrefabLv1(), _towerPlacementArea.transform.position, Quaternion.identity);
+      _playerStats.SpendEnergy(towerBlueprint.GetBuildCost());
       _existingTower = tower;
       _buildManager.ClearTowerToBuld();
    }

@@ -42,7 +42,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5134739753374211514}
-  - component: {fileID: 863973872283391341}
   m_Layer: 0
   m_Name: Barrel2
   m_TagString: Untagged
@@ -65,22 +64,6 @@ Transform:
   m_Father: {fileID: 3988693242737463286}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &863973872283391341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1336875970754995513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1181bccc355f21b40b979a87a006ff5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _projectilePrefab: {fileID: 4734371031154357681, guid: fcc9ebd3c215d9f4fa055d544fe12533,
-    type: 3}
-  _fireRate: 5
-  _mainTower: {fileID: 0}
 --- !u!1 &1756799986437995942
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,7 +106,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3934139499604792251}
-  - component: {fileID: 7607124671929421133}
   m_Layer: 0
   m_Name: Barrel1
   m_TagString: Untagged
@@ -146,22 +128,6 @@ Transform:
   m_Father: {fileID: 3988693242737463286}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7607124671929421133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3275525840503810090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1181bccc355f21b40b979a87a006ff5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _projectilePrefab: {fileID: 4734371031154357681, guid: fcc9ebd3c215d9f4fa055d544fe12533,
-    type: 3}
-  _fireRate: 5
-  _mainTower: {fileID: 0}
 --- !u!1 &3694039522831058302
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +172,7 @@ GameObject:
   - component: {fileID: 5807283963324882970}
   m_Layer: 0
   m_Name: Upper_Mesh
-  m_TagString: Untagged
+  m_TagString: Mesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -320,10 +286,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6021167616642044311}
-  - component: {fileID: 6488950142424624221}
   - component: {fileID: -1227998681612925618}
   m_Layer: 0
-  m_Name: AntiAir
+  m_Name: ArtilleryGhost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -345,27 +310,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 105, z: 0}
---- !u!65 &6488950142424624221
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6757710583505876544}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1.2, z: 1}
-  m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!114 &-1227998681612925618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,6 +322,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f3ff8cf75493364abb5888d0d208604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 768
+  _blueMat: {fileID: 2100000, guid: e64f3979ac3549f4b823d737743f1a9f, type: 2}
+  _redMat: {fileID: 2100000, guid: d36f91b76715f364d90fe01f4ed9e985, type: 2}
 --- !u!1 &6839262952338414997
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,7 +340,7 @@ GameObject:
   - component: {fileID: 6682762977817597638}
   m_Layer: 0
   m_Name: Body_Mesh
-  m_TagString: Untagged
+  m_TagString: Mesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -508,7 +457,7 @@ GameObject:
   - component: {fileID: 7647394767099360381}
   m_Layer: 0
   m_Name: Gun_Mesh
-  m_TagString: Untagged
+  m_TagString: Mesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -591,7 +540,7 @@ GameObject:
   - component: {fileID: 7517908815334899176}
   m_Layer: 0
   m_Name: Base_Mesh
-  m_TagString: Untagged
+  m_TagString: Mesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

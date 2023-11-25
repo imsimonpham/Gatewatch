@@ -1,12 +1,23 @@
 using UnityEngine;
 
-public class AntiAirCrafterBarrel : MonoBehaviour
+public class ArtilleryBarrel : MonoBehaviour
 {
     [SerializeField] private GameObject _projectilePrefab;
     [SerializeField] private float _fireRate = 10f;
     private float _canFire = 0f;
-    [SerializeField] private AntiAircrafter _mainTower;
+    [SerializeField] private Artillery _mainTower;
     private GameObject _target;
+    private GameObject _bulletContainer;
+
+    void Start()
+    {
+        _bulletContainer = GameObject.FindWithTag("BulletContainer");
+        if (_bulletContainer == null)
+        {
+            Debug.LogError("Bullet Container is null");
+        }
+    }
+    
 
     void Update()
     {
@@ -23,7 +34,8 @@ public class AntiAirCrafterBarrel : MonoBehaviour
     private void ShootProjectiles()
     {
         GameObject projectileGO = Instantiate(_projectilePrefab, transform.position, _target.transform.rotation);
-        AntiAircrafterProjectile projectile = projectileGO.GetComponent<AntiAircrafterProjectile>();
+        projectileGO.transform.parent = _bulletContainer.transform;
+        ArtilleryProjectile projectile = projectileGO.GetComponent<ArtilleryProjectile>();
 
         if (projectile != null)
         {
