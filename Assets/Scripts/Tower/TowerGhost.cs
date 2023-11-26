@@ -6,13 +6,22 @@ public class TowerGhost : MonoBehaviour
    [SerializeField] private LayerMask _layerMask;
    [SerializeField] private Material _blueMat;
    [SerializeField] private Material _redMat;
+   [SerializeField] 
    private GameObject[] _meshObjects;
+   private bool _towerGhostIsInRange = false;
+   private BuildManager _buildManager;
    
 
    void Start()
    {
       _meshObjects = GetChildrenWithTag("Mesh");
       _mainCam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+      _buildManager = GameObject.FindWithTag("BuildManager").GetComponent<BuildManager>();
+      if (_buildManager == null)
+      {
+         Debug.LogError("Build Manager is null");
+      }
+      TurnColorToRed();
    }
    void Update()
    {
@@ -21,22 +30,35 @@ public class TowerGhost : MonoBehaviour
       {
          transform.position = raycastHit.point;
          int hitLayer = raycastHit.collider.gameObject.layer;
-         
-         // Check if the hit layer is the "Ground" layer
-         if (LayerMask.LayerToName(hitLayer) == "Ground")
+         if (LayerMask.LayerToName(hitLayer) == "Base")
+         {
+            TowerBase towerBase = raycastHit.collider.gameObject.GetComponent<TowerBase>();
+            float distance = Vector3.Distance(transform.position, towerBase.transform.position);
+            if (distance <= 4f && towerBase.CanBuildHere())
+            {
+               TurnColorToBlue();
+               if (Input.GetKey(KeyCode.Mouse0))
+               {
+                  towerBase.BuildTower(_buildManager.GetTowerToBuild());
+               }
+            }
+            else
+            {
+               TurnColorToRed();
+            }
+         }
+         else
          {
             TurnColorToRed();
-         } else if (LayerMask.LayerToName(hitLayer) == "Base")
-         {
-            TurnColorToBlue();
          }
       }
       else
       {
-         TurnInvisible();
+         TurnColorToRed();
       }
    }
 
+   
    void TurnColorToBlue()
    {
       foreach (GameObject meshObject in _meshObjects)

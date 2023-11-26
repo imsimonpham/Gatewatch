@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1783582001603434713}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AntiAir_1_Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5134739753374211514}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Barrel2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3171153494775846007}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Horizontal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3934139499604792251}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Barrel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2328564826085052641}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TargetPointer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 5636170865545848081}
   - component: {fileID: 5545456833663757900}
   - component: {fileID: 5807283963324882970}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Upper_Mesh
   m_TagString: Mesh
   m_Icon: {fileID: 0}
@@ -251,7 +251,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3988693242737463286}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,9 +287,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6021167616642044311}
   - component: {fileID: -1227998681612925618}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ArtilleryGhost
-  m_TagString: Untagged
+  m_TagString: TowerGhost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -327,6 +327,7 @@ MonoBehaviour:
     m_Bits: 768
   _blueMat: {fileID: 2100000, guid: e64f3979ac3549f4b823d737743f1a9f, type: 2}
   _redMat: {fileID: 2100000, guid: d36f91b76715f364d90fe01f4ed9e985, type: 2}
+  _meshObjects: []
 --- !u!1 &6839262952338414997
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,7 +339,7 @@ GameObject:
   - component: {fileID: 5940160648994668405}
   - component: {fileID: 6952207642542821492}
   - component: {fileID: 6682762977817597638}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Body_Mesh
   m_TagString: Mesh
   m_Icon: {fileID: 0}
@@ -419,7 +420,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3477262591723767901}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Vertical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -455,7 +456,7 @@ GameObject:
   - component: {fileID: 2572158108924489910}
   - component: {fileID: 2601757418224459895}
   - component: {fileID: 7647394767099360381}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Gun_Mesh
   m_TagString: Mesh
   m_Icon: {fileID: 0}
@@ -538,7 +539,7 @@ GameObject:
   - component: {fileID: 1457004061674132411}
   - component: {fileID: 3498915973522834222}
   - component: {fileID: 7517908815334899176}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Base_Mesh
   m_TagString: Mesh
   m_Icon: {fileID: 0}

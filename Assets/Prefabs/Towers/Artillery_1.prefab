@@ -528,7 +528,7 @@ GameObject:
   - component: {fileID: 2711813441260698063}
   m_Layer: 0
   m_Name: Artillery_1
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -587,7 +587,6 @@ MonoBehaviour:
   _rotationSpeed: 10
   _horizontalRotator: {fileID: 5441133969556270918}
   _verticalRotator: {fileID: 4195047575829281076}
-  _targetPointer: {fileID: 8004071671611934205}
 --- !u!1 &8004071671611934205
 GameObject:
   m_ObjectHideFlags: 0

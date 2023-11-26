@@ -16,6 +16,9 @@ TagManager:
   - BulletContainer
   - GameManager
   - WaveSpawner
+  - TowerBaseUI
+  - Tower
+  - TowerGhost
   layers:
   - Default
   - TransparentFX
@@ -27,7 +30,7 @@ TagManager:
   - Fly Path
   - Ground
   - Base
-  - 
+  - TowerGhost
   - 
   - 
   - 
