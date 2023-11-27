@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
     private string _endPointTag = "EndPoint";
     private GamePlayUI _gamePlayUI;
     private PlayerStats _playerStats;
+    private GameManager _gameManager;
     
     void Start()
     {
@@ -28,6 +29,12 @@ public class EnemyMovement : MonoBehaviour
         {
             Debug.LogError("PlayerStats is null");
         }
+        
+        _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+        if (_gameManager == null)
+        {
+            Debug.LogError("Game Manager is null");
+        }
     }
     
 
@@ -41,6 +48,10 @@ public class EnemyMovement : MonoBehaviour
         {
             _waveSpawner.ReduceEnemiesAlive();
             _playerStats.ReduceLives();
+            if (_playerStats.GetLives() <= 0)
+            {
+                _gameManager.GameOver();
+            }
             Destroy(gameObject);
         }
     }

@@ -6,11 +6,9 @@ public class TowerGhost : MonoBehaviour
    [SerializeField] private LayerMask _layerMask;
    [SerializeField] private Material _blueMat;
    [SerializeField] private Material _redMat;
-   [SerializeField] 
-   private GameObject[] _meshObjects;
+   [SerializeField] private GameObject[] _meshObjects;
    private bool _towerGhostIsInRange = false;
    private BuildManager _buildManager;
-   
 
    void Start()
    {
@@ -23,7 +21,13 @@ public class TowerGhost : MonoBehaviour
       }
       TurnColorToRed();
    }
+
    void Update()
+   {
+      CheckSurroundings();
+   }
+
+   void CheckSurroundings()
    {
       Ray ray = _mainCam.ScreenPointToRay(Input.mousePosition);
       if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, _layerMask))
@@ -33,11 +37,10 @@ public class TowerGhost : MonoBehaviour
          if (LayerMask.LayerToName(hitLayer) == "Base")
          {
             TowerBase towerBase = raycastHit.collider.gameObject.GetComponent<TowerBase>();
-            float distance = Vector3.Distance(transform.position, towerBase.transform.position);
-            if (distance <= 4f && towerBase.CanBuildHere())
+            if (towerBase.CanBuildHere())
             {
                TurnColorToBlue();
-               if (Input.GetKey(KeyCode.Mouse0))
+               if (Input.GetMouseButtonDown(0))
                {
                   towerBase.BuildTower(_buildManager.GetTowerToBuild());
                }
@@ -54,11 +57,10 @@ public class TowerGhost : MonoBehaviour
       }
       else
       {
-         TurnColorToRed();
+         TurnInvisible();
       }
    }
 
-   
    void TurnColorToBlue()
    {
       foreach (GameObject meshObject in _meshObjects)

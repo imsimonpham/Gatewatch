@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Artillery : MonoBehaviour
+public class GunTurret : MonoBehaviour
 {
     [SerializeField] private GameObject _target;
     [SerializeField] private float _range = 15f;
@@ -30,7 +30,6 @@ public class Artillery : MonoBehaviour
         //Target enemies based on index
         int smallestEnemyIndex = int.MaxValue;
         GameObject prioritizedEnemy = null;
-        
         
         //Detect the enemies within range
         foreach (Collider collider in colliders)

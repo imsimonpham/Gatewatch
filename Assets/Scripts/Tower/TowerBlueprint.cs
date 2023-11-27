@@ -10,11 +10,11 @@ public class TowerBlueprint
     [SerializeField] private GameObject _prefabLv3;
 
     [SerializeField] private int _buildCost;
+    private int _saleGain;
+    private int _towerLevel = 1;
     
     [SerializeField] private int _upgradeCostToLv2;
     [SerializeField] private int _upgradeCostToLv3;
-    
-    
     
     //Prefabs
     public GameObject GetPrefabLv1()
@@ -35,8 +35,6 @@ public class TowerBlueprint
         return _prefabGhost;
     }
     
-    //Player gains half of the build cost + half of the upgrade cost to that level. 
-    
     //Cost
     public int GetBuildCost()
     {
@@ -52,6 +50,31 @@ public class TowerBlueprint
         return _upgradeCostToLv3;
     }
     
-    //others
+    //Gains
+    public int GetTowerSaleGain(int towerLevel)
+    {
+        if (towerLevel == 1)
+        {
+            _saleGain = Mathf.CeilToInt(_buildCost * 0.8f);
+        } else if (towerLevel == 2)
+        {
+            _saleGain = Mathf.CeilToInt(_buildCost * 0.8f + _upgradeCostToLv2 * 0.5f);
+        }
+        else
+        {
+            _saleGain = Mathf.CeilToInt(_buildCost * 0.8f + _upgradeCostToLv2 * 0.5f + _upgradeCostToLv3 * 0.5f);
+        }
+        return _saleGain;
+    }
     
+    //Level
+    /*public int GetTowerLevel()
+    {
+        return _towerLevel;
+    }
+
+    public void SetTowerLevel(int level)
+    {
+        _towerLevel = level;
+    }*/
 }

@@ -7,7 +7,6 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private GamePlayUI _gamePlayUI;
     [SerializeField] private int _lives;
     [SerializeField] private int _startLives;
-    [SerializeField] private GameManager _gameManager;
 
     void Start()
     {
@@ -16,15 +15,7 @@ public class PlayerStats : MonoBehaviour
         _gamePlayUI.UpdateEnergyText(_energy);
         _gamePlayUI.UpdateLivesText(_lives);
     }
-
-    void Update()
-    {
-        if (_lives <= 0)
-        {
-            _gameManager.GameOver();
-        }
-    }
-
+    
     public void SpendEnergy(int amount)
     {
         _energy -= amount;

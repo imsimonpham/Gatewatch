@@ -6,7 +6,7 @@ public class BuildManager : MonoBehaviour
 
     public bool HaveATowerToBuild()
     {
-        return _towerToBuild != null ? true : false;
+        return _towerToBuild != null;
     }
 
     public void SetTowerToBuild(TowerBlueprint tower)

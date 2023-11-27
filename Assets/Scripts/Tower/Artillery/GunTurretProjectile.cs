@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ArtilleryProjectile : MonoBehaviour
+public class GunTurretProjectile : MonoBehaviour
 {
     [SerializeField] private float _speed = 50f;
     [SerializeField] private float _dmg = 2f;

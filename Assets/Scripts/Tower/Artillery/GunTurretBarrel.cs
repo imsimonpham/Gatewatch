@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class ArtilleryBarrel : MonoBehaviour
+public class GunTurretBarrel : MonoBehaviour
 {
     [SerializeField] private GameObject _projectilePrefab;
     [SerializeField] private float _fireRate = 10f;
     private float _canFire = 0f;
-    [SerializeField] private Artillery _mainTower;
+    [SerializeField] private GunTurret _mainTower;
     private GameObject _target;
     private GameObject _bulletContainer;
 
@@ -35,7 +35,7 @@ public class ArtilleryBarrel : MonoBehaviour
     {
         GameObject projectileGO = Instantiate(_projectilePrefab, transform.position, _target.transform.rotation);
         projectileGO.transform.parent = _bulletContainer.transform;
-        ArtilleryProjectile projectile = projectileGO.GetComponent<ArtilleryProjectile>();
+        GunTurretProjectile projectile = projectileGO.GetComponent<GunTurretProjectile>();
 
         if (projectile != null)
         {
