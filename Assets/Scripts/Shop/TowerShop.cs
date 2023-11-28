@@ -6,6 +6,7 @@ public class TowerShop : MonoBehaviour
     [Header("Tower Blueprints")]
     [SerializeField] private TowerBlueprint _gunTurret;
     [SerializeField] private TowerBlueprint _artillery;
+    [SerializeField] private TowerBlueprint _flamethrower;
     
     [Header("Tower Shop Fields")]
     [SerializeField] private PlayerStats _playerStats;

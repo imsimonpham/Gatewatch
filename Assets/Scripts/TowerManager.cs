@@ -12,7 +12,6 @@ public class TowerManager : MonoBehaviour
     [SerializeField] private PlayerStats _playerStats;
     private TowerBase _selectedTowerBase;
     private GameObject _selectedTower;
-    //private TowerBlueprint _selectedTowerBlueprint;
     private int _towerSaleGain;
     [SerializeField] private TMP_Text _towerSaleGainText;
     [SerializeField] private TMP_Text _towerUpgradeCostText;
@@ -48,7 +47,6 @@ public class TowerManager : MonoBehaviour
                 if (towerBase.CanUpgradeOrSellHere() && Input.GetMouseButtonDown(0))
                 {
                     _selectedTowerBase = towerBase;
-                    //_selectedTowerBlueprint = _selectedTowerBase.GetExistingTowerBlueprint();
                     UpdateTowerSaleGainText(_selectedTowerBase);
                     UpdateTowerUpgradeCostText(_selectedTowerBase);
                     ShowTowerBaseUI(towerBase.GetTowerUIPosition());
@@ -105,6 +103,4 @@ public class TowerManager : MonoBehaviour
         _towerBaseUICanvas.enabled = true;
         _towerBaseUICanvas.transform.position = position;
     }
-
-   
 }

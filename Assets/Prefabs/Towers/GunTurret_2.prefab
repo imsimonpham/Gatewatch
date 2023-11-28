@@ -125,8 +125,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7329615798043287358}
+  - component: {fileID: 124572103623095547}
   m_Layer: 0
-  m_Name: Gun2
+  m_Name: GunTurretBarrel2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,6 +151,28 @@ Transform:
   m_Father: {fileID: 4953861012825229229}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &124572103623095547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3516269544824333014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1181bccc355f21b40b979a87a006ff5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectilePrefab: {fileID: 5735689639701472063, guid: e2740dc2a8d67c84c931a87d0608117d,
+    type: 3}
+  _fireRate: 2
+  _firePoints:
+  - {fileID: 4724536112495149033}
+  - {fileID: 3564426299227192165}
+  _mainTower: {fileID: 5438953861230902090}
+  _delayTime: 0.25
+  _muzzleFlashPrefab: {fileID: 7804613061845652836, guid: b0c76abc18a89af44a96f5c54e806440,
+    type: 3}
 --- !u!1 &3564426299227192165
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,9 +182,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7046959163010733953}
-  - component: {fileID: 3097916190214647926}
   m_Layer: 0
-  m_Name: Barrel4
+  m_Name: FirePoint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -182,22 +204,6 @@ Transform:
   m_Father: {fileID: 7329615798043287358}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3097916190214647926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3564426299227192165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1181bccc355f21b40b979a87a006ff5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _projectilePrefab: {fileID: 4734371031154357681, guid: fcc9ebd3c215d9f4fa055d544fe12533,
-    type: 3}
-  _fireRate: 10
-  _mainTower: {fileID: 5438953861230902090}
 --- !u!1 &4384528572100502224
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,7 +215,7 @@ GameObject:
   - component: {fileID: 3650254525008165792}
   - component: {fileID: 2509858880233704515}
   m_Layer: 0
-  m_Name: Barrel1
+  m_Name: FirePoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -245,7 +251,10 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 4734371031154357681, guid: fcc9ebd3c215d9f4fa055d544fe12533,
     type: 3}
   _fireRate: 10
+  _firePoints: []
   _mainTower: {fileID: 5438953861230902090}
+  _delayTime: 0
+  _muzzleFlashPrefab: {fileID: 0}
 --- !u!1 &4724536112495149033
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,9 +264,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4326705682545239249}
-  - component: {fileID: 1624701562356649328}
   m_Layer: 0
-  m_Name: Barrel3
+  m_Name: FirePoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -278,22 +286,6 @@ Transform:
   m_Father: {fileID: 7329615798043287358}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1624701562356649328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4724536112495149033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1181bccc355f21b40b979a87a006ff5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _projectilePrefab: {fileID: 4734371031154357681, guid: fcc9ebd3c215d9f4fa055d544fe12533,
-    type: 3}
-  _fireRate: 10
-  _mainTower: {fileID: 5438953861230902090}
 --- !u!1 &4873758453650391244
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,7 +401,7 @@ Transform:
   m_Children:
   - {fileID: 4133667819733335297}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &5403115088028822636
 BoxCollider:
@@ -608,8 +600,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6903590604165080797}
+  - component: {fileID: 6106407144613429622}
   m_Layer: 0
-  m_Name: Gun1
+  m_Name: GunTurretBarrel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -633,6 +626,28 @@ Transform:
   m_Father: {fileID: 4953861012825229229}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6106407144613429622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6517367697477573672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1181bccc355f21b40b979a87a006ff5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectilePrefab: {fileID: 5735689639701472063, guid: e2740dc2a8d67c84c931a87d0608117d,
+    type: 3}
+  _fireRate: 2
+  _firePoints:
+  - {fileID: 4384528572100502224}
+  - {fileID: 8444336210888862751}
+  _mainTower: {fileID: 5438953861230902090}
+  _delayTime: 0.25
+  _muzzleFlashPrefab: {fileID: 7804613061845652836, guid: b0c76abc18a89af44a96f5c54e806440,
+    type: 3}
 --- !u!1 &7186387479239374794
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,9 +823,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4998438104830293321}
-  - component: {fileID: 253735563514264183}
   m_Layer: 0
-  m_Name: Barrel2
+  m_Name: FirePoint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -831,19 +845,3 @@ Transform:
   m_Father: {fileID: 6903590604165080797}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &253735563514264183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8444336210888862751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1181bccc355f21b40b979a87a006ff5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _projectilePrefab: {fileID: 4734371031154357681, guid: fcc9ebd3c215d9f4fa055d544fe12533,
-    type: 3}
-  _fireRate: 10
-  _mainTower: {fileID: 5438953861230902090}

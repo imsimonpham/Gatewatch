@@ -209,9 +209,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2098291393585018513}
-  - component: {fileID: 6449455364468287152}
   m_Layer: 0
-  m_Name: Barrel1
+  m_Name: FirePoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -232,22 +231,6 @@ Transform:
   m_Father: {fileID: 9147157920428124499}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6449455364468287152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4908644615655110116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1181bccc355f21b40b979a87a006ff5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _projectilePrefab: {fileID: 4734371031154357681, guid: fcc9ebd3c215d9f4fa055d544fe12533,
-    type: 3}
-  _fireRate: 5
-  _mainTower: {fileID: 2711813441260698063}
 --- !u!1 &5333574328601785558
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,8 +472,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9147157920428124499}
+  - component: {fileID: 1838884385985027939}
   m_Layer: 0
-  m_Name: Gun
+  m_Name: GunTurretBarrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -515,6 +499,28 @@ Transform:
   m_Father: {fileID: 7838660233281323350}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1838884385985027939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7485752736835216623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1181bccc355f21b40b979a87a006ff5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectilePrefab: {fileID: 5735689639701472063, guid: e2740dc2a8d67c84c931a87d0608117d,
+    type: 3}
+  _fireRate: 2
+  _firePoints:
+  - {fileID: 4908644615655110116}
+  - {fileID: 8709003046553059316}
+  _mainTower: {fileID: 2711813441260698063}
+  _delayTime: 0.25
+  _muzzleFlashPrefab: {fileID: 7804613061845652836, guid: b0c76abc18a89af44a96f5c54e806440,
+    type: 3}
 --- !u!1 &7785408381070448240
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,7 +553,7 @@ Transform:
   m_Children:
   - {fileID: 7492321726839185821}
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 105, z: 0}
 --- !u!65 &2121304925165075767
 BoxCollider:
@@ -627,9 +633,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1961829672804088322}
-  - component: {fileID: 6136090347158123644}
   m_Layer: 0
-  m_Name: Barrel2
+  m_Name: FirePoint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -650,19 +655,3 @@ Transform:
   m_Father: {fileID: 9147157920428124499}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6136090347158123644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8709003046553059316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1181bccc355f21b40b979a87a006ff5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _projectilePrefab: {fileID: 4734371031154357681, guid: fcc9ebd3c215d9f4fa055d544fe12533,
-    type: 3}
-  _fireRate: 5
-  _mainTower: {fileID: 2711813441260698063}

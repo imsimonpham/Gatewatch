@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1063399425817773223}
+  - component: {fileID: 7049938393062463710}
   m_Layer: 0
-  m_Name: Cannon_2
+  m_Name: ArtilleryBarrel2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,9 +30,30 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6955610755952047394}
+  - {fileID: 4127341345237224011}
   m_Father: {fileID: 1699342247640270798}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7049938393062463710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129085752093101444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2309988b83d3daa44b1cc61b864dde78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectilePrefab: {fileID: 7504547777650955176, guid: dfefe9a697f5fd9418d8bbcb7561ecf8,
+    type: 3}
+  _fireRate: 0.3
+  _firePoint: {fileID: 1874489418871424360}
+  _mainTower: {fileID: 804452078333399694}
+  _delayTime: 0.5
+  _muzzleFlashPrefab: {fileID: 7137368770437112353, guid: 7edfec775f8e3444fb7d6923e7029d93,
+    type: 3}
 --- !u!1 &409973798967423031
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,6 +287,68 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1874489418871424360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4127341345237224011}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4127341345237224011
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874489418871424360}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.124, y: -0, z: 0.501}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1063399425817773223}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2951850239033017557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8499745273580359092}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8499745273580359092
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2951850239033017557}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.131, y: -0.00000011920929, z: 0.5009999}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6717570592631693634}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3122951441059224881
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,8 +674,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3389991032995951114}
   - component: {fileID: 4174773338827480233}
-  - component: {fileID: 6989481989857681657}
   - component: {fileID: 5112287944901953765}
+  - component: {fileID: 804452078333399694}
   m_Layer: 0
   m_Name: Artillery_2
   m_TagString: Untagged
@@ -613,7 +697,7 @@ Transform:
   m_Children:
   - {fileID: 1784882744747596139}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4174773338827480233
 BoxCollider:
@@ -636,22 +720,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.2991295, y: 1.1825199, z: 1.28392}
   m_Center: {x: 0.0025347471, y: 0.6033299, z: 0.00000011920929}
---- !u!114 &6989481989857681657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7555198701633652751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 450224564ddd7344c9487769a48cb7ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackCooldown: 1
-  VFX:
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!95 &5112287944901953765
 Animator:
   serializedVersion: 5
@@ -673,6 +741,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &804452078333399694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7555198701633652751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5f07cc37a5fd1b46a15a062ce04dc84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 0}
+  _range: 30
 --- !u!1 &8345448657966433805
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,8 +764,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6717570592631693634}
+  - component: {fileID: 1540229904010642331}
   m_Layer: 0
-  m_Name: Cannon_1
+  m_Name: ArtilleryBarrel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -702,9 +785,30 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5337534237592784238}
+  - {fileID: 8499745273580359092}
   m_Father: {fileID: 1699342247640270798}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1540229904010642331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8345448657966433805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2309988b83d3daa44b1cc61b864dde78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectilePrefab: {fileID: 7504547777650955176, guid: dfefe9a697f5fd9418d8bbcb7561ecf8,
+    type: 3}
+  _fireRate: 0.3
+  _firePoint: {fileID: 2951850239033017557}
+  _mainTower: {fileID: 804452078333399694}
+  _delayTime: 0
+  _muzzleFlashPrefab: {fileID: 7137368770437112353, guid: 7edfec775f8e3444fb7d6923e7029d93,
+    type: 3}
 --- !u!1 &8535027364573231267
 GameObject:
   m_ObjectHideFlags: 0
