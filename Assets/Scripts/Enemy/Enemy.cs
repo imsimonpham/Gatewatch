@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _health;
     [SerializeField] private float _maxHealth;
     [SerializeField] private int _enemyEnergyWorth;
+    [SerializeField] private GameObject _groundPoint;
     
     [SerializeField] private Image _healthBarImg;
     private float _target;
@@ -46,6 +47,7 @@ public class Enemy : MonoBehaviour
             Die();
         }
     }
+    
 
     public void Die()
     {
@@ -56,5 +58,10 @@ public class Enemy : MonoBehaviour
     void UpdateHealthBar()
     {
         _healthBarImg.fillAmount = _health/_maxHealth;
+    }
+
+    public GameObject GetGroundPoint()
+    {
+        return _groundPoint;
     }
 }

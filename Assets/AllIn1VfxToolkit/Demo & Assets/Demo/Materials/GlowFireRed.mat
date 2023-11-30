@@ -12,10 +12,9 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - ADDITIVECONFIG_ON
   - COLORRAMPGRAD_ON
   - COLORRAMP_ON
-  - DEPTHGLOW_ON
+  - GLOW_ON
   - HSV_ON
   - SOFTPART_ON
   m_InvalidKeywords: []
@@ -114,14 +113,14 @@ Material:
     - _CamDistProximityFade: 0
     - _ColorGradingMidPoint: 0.5
     - _ColorMask: 15
-    - _ColorRampBlend: 1
-    - _ColorRampLuminosity: -0.03
+    - _ColorRampBlend: 0.509
+    - _ColorRampLuminosity: -0.1
     - _CullingOption: 0
     - _DebugShape: 1
     - _DepthGlow: 0
-    - _DepthGlowDist: 0.5
+    - _DepthGlowDist: 1.32
     - _DepthGlowGlobal: 1
-    - _DepthGlowPow: 1
+    - _DepthGlowPow: 1.09
     - _DistortAmount: 0.5
     - _DistortTexXSpeed: 5
     - _DistortTexYSpeed: 5
@@ -140,11 +139,11 @@ Material:
     - _FadeTransition: 0.075
     - _FishEyeUvAmount: 0.35
     - _Glow: 0
-    - _GlowGlobal: 1
+    - _GlowGlobal: 15
     - _HandDrawnAmount: 10
     - _HandDrawnSpeed: 5
-    - _HsvBright: 1.3
-    - _HsvSaturation: 1.2
+    - _HsvBright: 0.75
+    - _HsvSaturation: 1.55
     - _HsvShift: 0
     - _LightAmount: 0
     - _MaskPow: 1
@@ -158,7 +157,7 @@ Material:
     - _RandomSh1Mult: 1
     - _RandomSh2Mult: 1
     - _RandomSh3Mult: 1
-    - _RenderingMode: 5
+    - _RenderingMode: 0
     - _RimAddAmount: 1
     - _RimBias: 0
     - _RimErodesAlpha: 0
@@ -214,8 +213,8 @@ Material:
     - _ShapeRotationSpeed: 0
     - _ShapeXSpeed: 0
     - _ShapeYSpeed: 0
-    - _SoftFactor: 0.5
-    - _SrcMode: 1
+    - _SoftFactor: 0.71
+    - _SrcMode: 5
     - _TextureScrollXSpeed: 1
     - _TextureScrollYSpeed: 0
     - _TimingSeed: 0
@@ -234,7 +233,7 @@ Material:
     - _WaveX: 0
     - _WaveY: 0.5
     - _ZTestMode: 4
-    - _ZWrite: 0
+    - _ZWrite: 1
     - _ZoomAmount: 1.5
     m_Colors:
     - _BackFaceTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
@@ -247,7 +246,7 @@ Material:
     - _FrontFaceTint: {r: 1, g: 1, b: 1, a: 1}
     - _GlowColor: {r: 1, g: 1, b: 1, a: 1}
     - _LightColor: {r: 1, g: 1, b: 1, a: 1}
-    - _RimColor: {r: 1, g: 1, b: 1, a: 1}
+    - _RimColor: {r: 0.8301887, g: 0, b: 0, a: 1}
     - _Shape2Color: {r: 1, g: 1, b: 1, a: 1}
     - _Shape3Color: {r: 1, g: 1, b: 1, a: 1}
     - _ShapeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -258,7 +257,7 @@ Texture2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: z_ColorRampTexGradientTex{"mode":0,"colorKeys":[{"color":{"r":1.0,"g":0.6877059936523438,"b":0.0,"a":1.0},"time":0.0},{"color":{"r":1.0,"g":0.8128868937492371,"b":0.29803919792175295,"a":1.0},"time":0.6176546812057495},{"color":{"r":1.0,"g":0.9793465733528137,"b":0.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":1.0,"time":1.0}]}
+  m_Name: z_ColorRampTexGradientTex{"mode":0,"colorKeys":[{"color":{"r":1.0,"g":0.0870111882686615,"b":0.0,"a":1.0},"time":0.0},{"color":{"r":1.0,"g":0.3388203978538513,"b":0.29803919792175295,"a":1.0},"time":0.6176546812057495},{"color":{"r":0.7735849022865295,"g":0.2842136323451996,"b":0.10582059621810913,"a":1.0},"time":0.994125247001648}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":1.0,"time":1.0}]}
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
@@ -294,7 +293,7 @@ Texture2D:
   m_ColorSpace: 0
   m_PlatformBlob: 
   image data: 256
-  _typelessdata: ffaf00ffffb002ffffb104ffffb206ffffb308ffffb30affffb40cffffb50effffb610ffffb712ffffb814ffffb815ffffb917ffffba19ffffbb1bffffbc1dffffbc1fffffbd21ffffbe23ffffbf25ffffc027ffffc129ffffc12bffffc22dffffc32fffffc431ffffc533ffffc635ffffc637ffffc739ffffc83bffffc93dffffca3effffca40ffffcb42ffffcc44ffffcd46ffffce48ffffcf4affffcf4cffffd149ffffd345ffffd542ffffd63fffffd83cffffda39ffffdc36ffffde32ffffdf2fffffe12cffffe329ffffe526ffffe623ffffe820ffffea1cffffec19ffffed16ffffef13fffff110fffff30dfffff409fffff606fffff803fffffa00ff
+  _typelessdata: ff1600ffff1802ffff1904ffff1b06ffff1d08ffff1e0affff200cffff220effff2310ffff2512ffff2714ffff2815ffff2a17ffff2c19ffff2d1bffff2f1dffff311fffff3221ffff3423ffff3625ffff3727ffff3929ffff3a2bffff3c2dffff3e2fffff3f31ffff4133ffff4335ffff4437ffff4639ffff483bffff493dffff4b3effff4d40ffff4e42ffff5044ffff5246ffff5348ffff554affff564cfffc564afffa5548fff75546fff55444fff35341fff0533fffee523dffeb523bffe95139ffe65037ffe45035ffe24f33ffdf4f31ffdd4e2fffda4e2dffd84d2bffd54c29ffd34c27ffd14b25ffce4b22ffcc4a20ffc9491effc7491cffc5481bff
   m_StreamData:
     serializedVersion: 2
     offset: 0

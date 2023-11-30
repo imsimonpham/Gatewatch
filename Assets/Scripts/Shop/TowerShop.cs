@@ -60,6 +60,16 @@ public class TowerShop : MonoBehaviour
         }
     }
     
+    public void SelectFlamerthrower()
+    {
+        Debug.Log("Flamethrower selected");
+        _buildManager.SetTowerToBuild(_flamethrower);
+        if (_existingTowerGhost == null)
+        {
+            _existingTowerGhost = Instantiate(_flamethrower.GetTowerghost());
+        }
+    }
+    
     void UpdateTowerCostTexts()
     {
         _gunTurretCostText.text = _gunTurret.GetBuildCost().ToString();

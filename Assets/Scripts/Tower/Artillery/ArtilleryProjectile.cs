@@ -8,7 +8,6 @@ public class ArtilleryProjectile : MonoBehaviour
     [SerializeField] private float _explosionRadius;
     [SerializeField] private GameObject _hitImpactPrefab;
     private string _airEnemyTag = "AirEnemy";
-    private string _environmentTag = "Environment";
     private string _groundEnemyTag = "GroundEnemy";
     private float _animation;
     private GameObject _firePoint;

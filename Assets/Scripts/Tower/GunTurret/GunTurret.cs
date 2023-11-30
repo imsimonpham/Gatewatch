@@ -78,7 +78,7 @@ public class GunTurret : MonoBehaviour
     
     void OnDrawGizmosSelected()
     {
-        Gizmos.color = new Color32(255, 240, 142, 20);
+        Gizmos.color = new Color32(255, 240, 142, 100);
         Gizmos.DrawSphere(transform.position, _range);
     }
 

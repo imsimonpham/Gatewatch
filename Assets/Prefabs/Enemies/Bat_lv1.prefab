@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2903891320970901927}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RigREar3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 52889307272041830}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RigRArm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4748482134576354748}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RigREar2Gizmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 5152820758061063032}
   - component: {fileID: 4025342447889517361}
   - component: {fileID: 6523548737297865394}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: HealthUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 413101080519270131}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RigREar2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1236731231657100010}
   - component: {fileID: 7722364526344054802}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bat_lv1
   m_TagString: AirEnemy
   m_Icon: {fileID: 0}
@@ -323,7 +323,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8612125853808271593}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RigLEar1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -355,7 +355,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1042510925144274086}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RigLEar1Gizmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -386,7 +386,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5061453568990792544}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RigLArm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -417,7 +417,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1393960171276047551}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RigHubGizmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -450,7 +450,7 @@ GameObject:
   - component: {fileID: 6819105899727683604}
   - component: {fileID: 7206794153767713962}
   - component: {fileID: 5540702134875010068}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -524,7 +524,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1653929360107794273}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RigLEar3Gizmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -555,7 +555,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2146142102780594961}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RigREar1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -587,7 +587,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2589826891643815597}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RigHub
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -623,7 +623,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2910191545134360370}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RigLArm2Gizmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -654,7 +654,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1813971710771484679}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -686,7 +686,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7799662993667832668}
   - component: {fileID: 2594942220762952284}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -787,7 +787,7 @@ GameObject:
   - component: {fileID: 1644321798045272611}
   - component: {fileID: 9209099680971434800}
   - component: {fileID: 1292006295644829422}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bat_lv1
   m_TagString: AirEnemy
   m_Icon: {fileID: 0}
@@ -826,7 +826,7 @@ MonoBehaviour:
   _enemyIndex: 0
   _health: 0
   _maxHealth: 100
-  _enemyEnergyWorth: 10
+  _enemyEnergyWorth: 15
   _healthBarImg: {fileID: 5540702134875010068}
 --- !u!114 &3662969437985698752
 MonoBehaviour:
@@ -920,7 +920,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4250317615343071693}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RigREar3Gizmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -951,7 +951,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3706344903401325119}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RigLEar2Gizmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -982,7 +982,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7165370890940428860}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RigRArm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1014,7 +1014,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4086271876532282841}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RigLEar3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1047,7 +1047,7 @@ GameObject:
   - component: {fileID: 5083078145482894151}
   - component: {fileID: 7636445154876519682}
   - component: {fileID: 3492038327991887361}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: HealthBarBg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1122,7 +1122,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8438693789512714267}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RigREar1Gizmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1153,7 +1153,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2476634173461528265}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RigLArm1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1185,7 +1185,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7203021274811719769}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RigLArm1Gizmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1216,7 +1216,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4410004097122088775}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RigRArm2Gizmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1247,7 +1247,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2703525956387921794}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RigLEar2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1280,7 +1280,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8522906312482662956}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RigJawGizmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1311,7 +1311,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8265665325018545033}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RigJaw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1342,7 +1342,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3995802093539306683}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RigRArm1Gizmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
