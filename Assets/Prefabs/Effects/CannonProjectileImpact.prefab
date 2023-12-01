@@ -9750,6 +9750,7 @@ GameObject:
   - component: {fileID: 4580334951901863465}
   - component: {fileID: 6219811160399874275}
   - component: {fileID: 8316532082622623526}
+  - component: {fileID: -5014485269706452735}
   m_Layer: 0
   m_Name: CannonProjectileImpact
   m_TagString: Untagged
@@ -9766,7 +9767,7 @@ Transform:
   m_GameObject: {fileID: 1956734735866284066}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -96.912, y: 22.32, z: -64.77661}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8901775094458165961}
@@ -9775,7 +9776,7 @@ Transform:
   - {fileID: 5875224513517837496}
   - {fileID: 9189252844988864923}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!199 &4580334951901863465
 ParticleSystemRenderer:
@@ -14608,12 +14609,27 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 2.13768, y: 2.1255372, z: 0.22042647}
   m_Center: {x: 0.008392334, y: 0.0032149553, z: 0.077307075}
+--- !u!114 &-5014485269706452735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956734735866284066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fb5af7f01c7dcc479f8097839614cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _activeTime: 2
+  _burnEffect: {fileID: 8643673919334283632}
+  _dps: 15
 --- !u!1 &4235755380127393518
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,17 +6,19 @@ public class TowerShop : MonoBehaviour
     [Header("Tower Blueprints")]
     [SerializeField] private TowerBlueprint _gunTurret;
     [SerializeField] private TowerBlueprint _artillery;
-    [SerializeField] private TowerBlueprint _flamethrower;
+    [SerializeField] private TowerBlueprint _scorchCannon;
     
     [Header("Tower Shop Fields")]
     [SerializeField] private PlayerStats _playerStats;
     [SerializeField] private BuildManager _buildManager;
     [SerializeField] private TMP_Text _gunTurretCostText;
     [SerializeField] private TMP_Text _artilleryCostText;
+    [SerializeField] private TMP_Text _scorchCannonCostText;
     
     [Header("Tower Shop Buttons")]
     [SerializeField] private Button _gunTurretButton;
     [SerializeField] private Button _artilleryButton;
+    [SerializeField] private Button _scorchCannonButton;
     
     private GameObject _existingTowerGhost;
     private TowerBlueprint[] _towerBlueprints;
@@ -60,13 +62,13 @@ public class TowerShop : MonoBehaviour
         }
     }
     
-    public void SelectFlamerthrower()
+    public void SelectScorchCannon()
     {
-        Debug.Log("Flamethrower selected");
-        _buildManager.SetTowerToBuild(_flamethrower);
+        Debug.Log("Scorch Cannon selected");
+        _buildManager.SetTowerToBuild(_scorchCannon);
         if (_existingTowerGhost == null)
         {
-            _existingTowerGhost = Instantiate(_flamethrower.GetTowerghost());
+            _existingTowerGhost = Instantiate(_scorchCannon.GetTowerghost());
         }
     }
     
@@ -74,6 +76,7 @@ public class TowerShop : MonoBehaviour
     {
         _gunTurretCostText.text = _gunTurret.GetBuildCost().ToString();
         _artilleryCostText.text = _artillery.GetBuildCost().ToString();
+        _scorchCannonCostText.text = _scorchCannon.GetBuildCost().ToString();
     }
 
     void UpdateTowerButtonState()
@@ -94,6 +97,14 @@ public class TowerShop : MonoBehaviour
         else
         {
             _artilleryButton.interactable = true;
+        }
+        if (energy < _scorchCannon.GetBuildCost())
+        {
+            _scorchCannonButton.interactable = false;
+        }
+        else
+        {
+            _scorchCannonButton.interactable = true;
         }
     }
 }

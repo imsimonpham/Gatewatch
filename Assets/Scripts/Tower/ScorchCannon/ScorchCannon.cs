@@ -6,8 +6,6 @@ public class ScorchCannon : MonoBehaviour
     [SerializeField] private float _range = 10f;
     [SerializeField] private float _rotationSpeed = 10f;
     [SerializeField] private GameObject _horizontalRotator;
-    //[SerializeField] private GameObject _verticalRotator;
-    //[SerializeField] private GameObject _targetPointer;
     
     private string _airEnemyTag = "AirEnemy";
     private string _groundEnemyTag = "GroundEnemy";
@@ -62,9 +60,7 @@ public class ScorchCannon : MonoBehaviour
         Vector3 dir = _target.transform.position - transform.position;
         Quaternion lookToRotation = Quaternion.LookRotation(dir);
         Vector3 horizontalRotation = Quaternion.Lerp(_horizontalRotator.transform.rotation, lookToRotation, _rotationSpeed * Time.deltaTime).eulerAngles;
-        //Vector3 verticalRotation = Quaternion.Lerp(_verticalRotator.transform.rotation, lookToRotation, _rotationSpeed * Time.deltaTime).eulerAngles;
         _horizontalRotator.transform.rotation = Quaternion.Euler(0f, horizontalRotation.y, 0f);
-        //_verticalRotator.transform.rotation = Quaternion.Euler(verticalRotation.x, verticalRotation.y, 0f);
     }
     
     

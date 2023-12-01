@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     private float _target;
     private float _reduceSpeed = 1f;
     private PlayerStats _playerStats;
+    private WaveSpawner _waveSpawner;
     
 
     void Start()
@@ -24,6 +25,12 @@ public class Enemy : MonoBehaviour
         if (_playerStats == null)
         {
             Debug.LogError("PlayerStats is null");
+        }
+        
+        _waveSpawner = GameObject.FindWithTag("WaveSpawner").GetComponent<WaveSpawner>();
+        if (_waveSpawner == null)
+        {
+            Debug.LogError("Wave Spawner is null");
         }
     }
     
@@ -51,6 +58,7 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
+        _waveSpawner.CountEnemiesKilledPerWave();
         Destroy(gameObject);
     }
     

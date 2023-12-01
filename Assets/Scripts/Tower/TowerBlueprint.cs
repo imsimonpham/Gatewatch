@@ -11,7 +11,6 @@ public class TowerBlueprint
 
     [SerializeField] private int _buildCost;
     private int _saleGain;
-    private int _towerLevel = 1;
     
     [SerializeField] private int _upgradeCostToLv2;
     [SerializeField] private int _upgradeCostToLv3;
@@ -66,15 +65,4 @@ public class TowerBlueprint
         }
         return _saleGain;
     }
-    
-    //Level
-    /*public int GetTowerLevel()
-    {
-        return _towerLevel;
-    }
-
-    public void SetTowerLevel(int level)
-    {
-        _towerLevel = level;
-    }*/
 }

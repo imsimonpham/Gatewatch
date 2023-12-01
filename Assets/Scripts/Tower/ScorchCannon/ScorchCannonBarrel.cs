@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 public class ScorchCannonBarrel : MonoBehaviour
 {
@@ -21,7 +20,6 @@ public class ScorchCannonBarrel : MonoBehaviour
             Debug.LogError("Bullet Container is null");
         }
     }
-    
 
     void Update()
     {
@@ -37,9 +35,11 @@ public class ScorchCannonBarrel : MonoBehaviour
 
     private void ShootProjectiles()
     {
-        GameObject projectileGO = Instantiate(_projectilePrefab, _firePoint.transform.position, _target.transform.rotation);
-        //GameObject muzzleFlashGO = Instantiate(_muzzleFlashPrefab, _firePoint.transform.position, _target.transform.rotation);
-        //muzzleFlashGO.transform.parent = _bulletContainer.transform;
+        Vector3 pos = _firePoint.transform.position;
+        Quaternion rot = _target.transform.rotation;
+        GameObject projectileGO = Instantiate(_projectilePrefab, pos, rot);
+        GameObject muzzleFlashGO = Instantiate(_muzzleFlashPrefab, pos, rot);
+        muzzleFlashGO.transform.parent = _bulletContainer.transform;
         projectileGO.transform.parent = _bulletContainer.transform;
         ScorchCannonProjectile projectile = projectileGO.GetComponent<ScorchCannonProjectile>();
         if (projectile != null)

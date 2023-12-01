@@ -14,8 +14,10 @@ public class ScorchCannonProjectile : MonoBehaviour
     private GameObject _firePoint;
     private GameObject _target;
     private GameObject _bulletContainer;
+    private Vector3 _lastPos;
+    private Vector3 _pos;
     [SerializeField] private float _height;
-
+    [SerializeField] private float _maxDistance;
     void Start()
     {
         _bulletContainer = GameObject.FindWithTag("BulletContainer");
@@ -27,12 +29,17 @@ public class ScorchCannonProjectile : MonoBehaviour
 
     void Update()
     {
-        if (_target == null)
+        if (_target != null)
         {
-            Destroy(gameObject, 0.5f);
-            return;
+            _pos = _target.transform.position;
+            _lastPos = _pos;
+            FollowParabolicArc(_lastPos);
         }
-        FollowParabolicArc();
+        else
+        {
+            _pos = _lastPos;
+            FollowParabolicArc(_pos);
+        }
     }
 
     public void SeekTarget(GameObject target)
@@ -58,10 +65,14 @@ public class ScorchCannonProjectile : MonoBehaviour
             if (enemy != null)
             {
                 GameObject groundPoint = enemy.GetGroundPoint();
-                InstantiateHitImpact(groundPoint.transform.position, groundPoint.transform.rotation);
+                Vector3 pos = new Vector3(groundPoint.transform.position.x, groundPoint.transform.position.y + 0.2f, groundPoint.transform.position.z);
+                Quaternion rot = groundPoint.transform.rotation;
+                InstantiateHitImpact(pos,rot);
             }
+            Destroy(gameObject);
         }
     }
+    
 
     void InstantiateHitImpact(Vector3 pos, Quaternion rot)
     {
@@ -69,10 +80,10 @@ public class ScorchCannonProjectile : MonoBehaviour
         impact.transform.parent = _bulletContainer.transform;
     }
 
-    public void FollowParabolicArc()
+    public void FollowParabolicArc(Vector3 pos)
     {
-        _animation += Time.deltaTime;
-        transform.position = Parabola(_firePoint.transform.position, _target.transform.position, _height, _animation);
+        _animation += Time.deltaTime * _speed;
+        transform.position = Parabola(_firePoint.transform.position, pos, _height, _animation);
     }
     private Vector3 Parabola (Vector3 start, Vector3 end, float height, float t)
     {

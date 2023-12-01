@@ -1,24 +1,26 @@
 using System.Collections;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
     [SerializeField] private WaveData[] _waveData;
     [SerializeField] private GameObject _enemyContainer;
-    [SerializeField] private float _timeBetweenWaves = 5f;
-    [SerializeField] private float _countdown = 3f;
  
     [SerializeField] private int _waveIndex;
     private int _enemyIndex;
-    private bool _waveIsSkipped = false;
-    private int _enemiesAlivePerWave;
+    private int _enemiesKilledPerWave;
     private string _groundEnemyTag = "GroundEnemy";
     private string _airEnemyTag = "AirEnemy";
     private GameObject spawnPoint;
     private GameObject endPoint;
-
+    private bool _startWave = false;
+    private int _totalEnemiesPerWave;
+    
     [SerializeField] private GamePlayUI _gamePlayUI;
+    [SerializeField] private Button _startWaveButton;
+    [SerializeField] private TMP_Text _startWaveButtonText;
     
     //Paths
     [SerializeField] private GameObject _groundSpawnPoint_1;
@@ -35,36 +37,42 @@ public class WaveSpawner : MonoBehaviour
     {
         _waveIndex = 0;
         _enemyIndex = 0;
+        _enemiesKilledPerWave = 0;
+        _totalEnemiesPerWave = 0;
     }
 
     void Update()
     {
-        /*if (_waveIsSkipped)
+        if (_startWave)
         {
-            _countdown = 0;
-            _waveIsSkipped = false;
-        }*/
-        
-        if (_countdown <= 0f)
-        {
+            _startWave = false;
+            _startWaveButton.gameObject.SetActive(false);
             StartCoroutine(SpawnWave());
-            _countdown = _timeBetweenWaves;
-            return;
         }
 
-        if (_waveIndex < _waveData.Length)
+        if (_enemiesKilledPerWave >= _totalEnemiesPerWave * 0.5f)
         {
-            _countdown -= Time.deltaTime;
-            _gamePlayUI.UpDateCountdownText(_countdown);
+            _startWaveButton.gameObject.SetActive(true);
         }
     }
 
     IEnumerator SpawnWave()
     {
+        _enemiesKilledPerWave = 0;
+        _totalEnemiesPerWave = 0;
+        if (_waveIndex == _waveData.Length - 1)
+        {
+            _startWaveButton.gameObject.SetActive(false);
+        }
         WaveData waveData = _waveData[_waveIndex];
         _gamePlayUI.UpdateWaveText(_waveIndex + 1, _waveData.Length);
         foreach (EnemyData enemyData in waveData.GetEnemyDataList())
         {
+            _totalEnemiesPerWave += enemyData.GetEnemyCount();
+        }
+        foreach (EnemyData enemyData in waveData.GetEnemyDataList())
+        {
+            
             for (int i = 0; i < enemyData.GetEnemyCount(); i++)
             {
                 GameObject enemyPrefab = enemyData.GetEnemyPrefab();
@@ -80,7 +88,6 @@ public class WaveSpawner : MonoBehaviour
                 {
                     enemySpawnRate = enemyData.GetEnemySpawnRate();
                 }
-                //Debug.Log(enemySpawnRate);
                 
                 if (enemyPrefab.CompareTag(_groundEnemyTag))
                 {
@@ -145,16 +152,15 @@ public class WaveSpawner : MonoBehaviour
             enemyMovement.MoveToEndPoint(endPoint);
         }
         _enemyIndex++;
-        _enemiesAlivePerWave++;
     }
 
-    public void ReduceEnemiesAlive()
+    public void CountEnemiesKilledPerWave()
     {
-        _enemiesAlivePerWave--;
+        _enemiesKilledPerWave++;
     }
 
-    public void SkipWave()
+    public void StartWave()
     {
-        _waveIsSkipped = true;
+        _startWave = true;
     }
 }

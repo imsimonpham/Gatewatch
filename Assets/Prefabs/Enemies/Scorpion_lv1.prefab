@@ -159,8 +159,9 @@ Transform:
   m_Children:
   - {fileID: 6312810395181167177}
   - {fileID: 1448889500333910338}
+  - {fileID: 8526499117282748958}
   m_Father: {fileID: 0}
-  m_RootOrder: 30
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1486957921215920280
 MonoBehaviour:
@@ -191,6 +192,7 @@ MonoBehaviour:
   _health: 0
   _maxHealth: 150
   _enemyEnergyWorth: 20
+  _groundPoint: {fileID: 6340221179103154332}
   _healthBarImg: {fileID: 561958891603211949}
 --- !u!195 &3710554599913192043
 NavMeshAgent:
@@ -1306,6 +1308,37 @@ Transform:
   m_Father: {fileID: 2434193677763150567}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6340221179103154332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8526499117282748958}
+  m_Layer: 12
+  m_Name: GroundPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8526499117282748958
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6340221179103154332}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6423008970019839953}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &6384000618219063558
 GameObject:
   m_ObjectHideFlags: 0

@@ -1213,6 +1213,37 @@ Transform:
   m_Father: {fileID: 6484521653895908942}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6807940695116170066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 486003967094649158}
+  m_Layer: 12
+  m_Name: GroundPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &486003967094649158
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6807940695116170066}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.1, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3221431541781347668}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6837143537734723291
 GameObject:
   m_ObjectHideFlags: 0
@@ -1570,8 +1601,9 @@ Transform:
   m_Children:
   - {fileID: 6484521653895908942}
   - {fileID: 6043420931067206411}
+  - {fileID: 486003967094649158}
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8771801954234908645
 MonoBehaviour:
@@ -1602,6 +1634,7 @@ MonoBehaviour:
   _health: 0
   _maxHealth: 80
   _enemyEnergyWorth: 10
+  _groundPoint: {fileID: 6807940695116170066}
   _healthBarImg: {fileID: 60884954667287970}
 --- !u!195 &8408282917301410772
 NavMeshAgent:

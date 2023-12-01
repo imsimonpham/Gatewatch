@@ -4,10 +4,6 @@ public class Artillery : MonoBehaviour
 {
     [SerializeField] private GameObject _target;
     [SerializeField] private float _range = 30f;
-    //[SerializeField] private float _rotationSpeed = 10f;
-    //[SerializeField] private GameObject _horizontalRotator;
-    //[SerializeField] private GameObject _verticalRotator;
-    //[SerializeField] private GameObject _targetPointer;
     
     private string _airEnemyTag = "AirEnemy";
     private string _groundEnemyTag = "GroundEnemy";
@@ -30,7 +26,7 @@ public class Artillery : MonoBehaviour
         foreach (Collider collider in colliders)
         {
             //Artillery cannot target air enemies
-            if (collider.CompareTag(_groundEnemyTag))
+            if (collider.CompareTag(_groundEnemyTag) || collider.CompareTag(_airEnemyTag))
             {
                 Enemy enemy = collider.GetComponent<Enemy>();
                 int enemyIndex = enemy.GetEnemyIndex();
@@ -52,14 +48,6 @@ public class Artillery : MonoBehaviour
             _target = null;
         }
     }
-    
-    /*void OnDrawGizmos()
-    {
-        if(_target != null) { 
-            Gizmos.color = Color.red;      
-            Gizmos.DrawLine(_targetPointer.transform.position, _target.transform.position);
-        }
-    }*/
     
     void OnDrawGizmosSelected()
     {

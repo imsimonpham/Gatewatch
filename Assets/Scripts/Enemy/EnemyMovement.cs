@@ -46,7 +46,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (other.CompareTag(_endPointTag))
         {
-            _waveSpawner.ReduceEnemiesAlive();
+            _waveSpawner.CountEnemiesKilledPerWave();
             _playerStats.ReduceLives();
             if (_playerStats.GetLives() <= 0)
             {

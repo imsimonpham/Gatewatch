@@ -13,6 +13,8 @@ public class ArtilleryProjectile : MonoBehaviour
     private GameObject _firePoint;
     private GameObject _target;
     private GameObject _bulletContainer;
+    private Vector3 _lastPos;
+    private Vector3 _pos;
     [SerializeField] private float _height;
 
     void Start()
@@ -26,12 +28,17 @@ public class ArtilleryProjectile : MonoBehaviour
 
     void Update()
     {
-        if (_target == null)
+        if (_target != null)
         {
-            Destroy(gameObject, 0.5f);
-            return;
+            _pos = _target.transform.position;
+            _lastPos = _pos;
+            FollowParabolicArc(_lastPos);
         }
-        FollowParabolicArc();
+        else
+        {
+            _pos = _lastPos;
+            FollowParabolicArc(_pos);
+        }
     }
 
     public void SeekTarget(GameObject target)
@@ -57,12 +64,39 @@ public class ArtilleryProjectile : MonoBehaviour
         GameObject impact = Instantiate(_hitImpactPrefab, pos, Quaternion.identity);
         impact.transform.parent = _bulletContainer.transform;
     }
-
-    public void FollowParabolicArc()
+    
+    /*private void OnTriggerEnter(Collider other)
     {
-        _animation += Time.deltaTime;
-        transform.position = Parabola(_firePoint.transform.position, _target.transform.position, _height, _animation);
+        if (!other.gameObject.CompareTag(_groundEnemyTag))
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            AOEDamage();
+            Enemy enemy = other.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                GameObject groundPoint = enemy.GetGroundPoint();
+                Vector3 pos = new Vector3(groundPoint.transform.position.x, groundPoint.transform.position.y + 0.2f, groundPoint.transform.position.z);
+                Quaternion rot = groundPoint.transform.rotation;
+                InstantiateHitImpact(pos,rot);
+            }
+            Destroy(gameObject);
+        }
     }
+    void InstantiateHitImpact(Vector3 pos, Quaternion rot)
+    {
+        GameObject impact = Instantiate(_hitImpactPrefab, pos,rot);
+        impact.transform.parent = _bulletContainer.transform;
+    }*/
+
+    public void FollowParabolicArc(Vector3 pos)
+    {
+        _animation += Time.deltaTime * _speed;
+        transform.position = Parabola(_firePoint.transform.position, pos, _height, _animation);
+    }
+    
     private Vector3 Parabola (Vector3 start, Vector3 end, float height, float t)
     {
         Func<float, float> f = x => -4 * height * x * x + 4 * height * x;
