@@ -9858,14 +9858,14 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1956734735866284066}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 3
   simulationSpeed: 1
   stopAction: 2
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -14627,7 +14627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fb5af7f01c7dcc479f8097839614cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _activeTime: 2
+  _activeTime: 3
   _burnEffect: {fileID: 8643673919334283632}
   _dps: 15
 --- !u!1 &4235755380127393518

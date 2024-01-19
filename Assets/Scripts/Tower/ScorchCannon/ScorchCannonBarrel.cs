@@ -7,10 +7,12 @@ public class ScorchCannonBarrel : MonoBehaviour
     [SerializeField] private GameObject _firePoint; 
     private float _canFire = 0f;
     [SerializeField] private ScorchCannon _mainTower;
-    private GameObject _target;
+    //private GameObject _target;
     private GameObject _bulletContainer;
     [SerializeField] private float _delayTime;
     [SerializeField] private GameObject _muzzleFlashPrefab;
+
+    private GameObject _targetShadow;
 
     void Start()
     {
@@ -23,20 +25,22 @@ public class ScorchCannonBarrel : MonoBehaviour
 
     void Update()
     {
-        _target = _mainTower.GetTarget();
-        if (_canFire <= 0f && _target != null)
+        if (_mainTower.HaveATarget())
         {
-            Invoke("ShootProjectiles", _delayTime);
-            _canFire = 1f / _fireRate;
+            _targetShadow = _mainTower.GetTargetShadowFromTowerBase();
+            if (_canFire <= 0f)
+            {
+                Invoke("ShootProjectiles", _delayTime);
+                _canFire = 1f / _fireRate;
+            }
+            _canFire -= Time.deltaTime;
         }
-
-        _canFire -= Time.deltaTime;
     }
 
     private void ShootProjectiles()
     {
         Vector3 pos = _firePoint.transform.position;
-        Quaternion rot = _target.transform.rotation;
+        Quaternion rot = _targetShadow.transform.rotation;
         GameObject projectileGO = Instantiate(_projectilePrefab, pos, rot);
         GameObject muzzleFlashGO = Instantiate(_muzzleFlashPrefab, pos, rot);
         muzzleFlashGO.transform.parent = _bulletContainer.transform;
@@ -44,7 +48,7 @@ public class ScorchCannonBarrel : MonoBehaviour
         ScorchCannonProjectile projectile = projectileGO.GetComponent<ScorchCannonProjectile>();
         if (projectile != null)
         {
-            projectile.SeekTarget(_target);
+            projectile.SeekTargetShadow(_targetShadow);
             projectile.SetFirePoint(_firePoint);
         }
     }

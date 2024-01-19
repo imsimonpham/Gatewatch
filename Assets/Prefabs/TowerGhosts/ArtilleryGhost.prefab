@@ -541,7 +541,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1929486716797267912}
-  - component: {fileID: 840984099159314802}
   m_Layer: 0
   m_Name: ArtilleryBarrel
   m_TagString: Untagged
@@ -565,26 +564,6 @@ Transform:
   m_Father: {fileID: 3328736242370841484}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &840984099159314802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5172947811721527901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2309988b83d3daa44b1cc61b864dde78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _projectilePrefab: {fileID: 7504547777650955176, guid: dfefe9a697f5fd9418d8bbcb7561ecf8,
-    type: 3}
-  _fireRate: 0.3
-  _firePoint: {fileID: 0}
-  _mainTower: {fileID: 0}
-  _delayTime: 0
-  _muzzleFlashPrefab: {fileID: 7137368770437112353, guid: 7edfec775f8e3444fb7d6923e7029d93,
-    type: 3}
 --- !u!1 &6236647868762895985
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,7 +694,7 @@ Transform:
   - {fileID: 6990718922776293205}
   - {fileID: 3123314958481926298}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &109676591631692971
 MonoBehaviour:

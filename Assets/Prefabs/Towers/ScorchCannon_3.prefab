@@ -549,9 +549,10 @@ GameObject:
   - component: {fileID: 7623280165577883426}
   - component: {fileID: 7774046490594014311}
   - component: {fileID: 8958351970632134327}
+  - component: {fileID: -8707186611929739311}
   m_Layer: 0
   m_Name: ScorchCannon_3
-  m_TagString: Untagged
+  m_TagString: AOETower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -609,6 +610,18 @@ MonoBehaviour:
   _range: 13
   _rotationSpeed: 10
   _horizontalRotator: {fileID: 8941968615052816839}
+--- !u!114 &-8707186611929739311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8206145103744545624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 247708909d6406c47a8d45c9a54c1f79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8218218926703211930
 GameObject:
   m_ObjectHideFlags: 0

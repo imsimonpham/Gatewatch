@@ -39,6 +39,7 @@ public class WaveSpawner : MonoBehaviour
         _enemyIndex = 0;
         _enemiesKilledPerWave = 0;
         _totalEnemiesPerWave = 0;
+        _gamePlayUI.UpdateWaveText(1, _waveData.Length);
     }
 
     void Update()
@@ -50,7 +51,7 @@ public class WaveSpawner : MonoBehaviour
             StartCoroutine(SpawnWave());
         }
 
-        if (_enemiesKilledPerWave >= _totalEnemiesPerWave * 0.5f)
+        if (_enemiesKilledPerWave >= _totalEnemiesPerWave * 0.5f && _waveIndex < _waveData.Length)
         {
             _startWaveButton.gameObject.SetActive(true);
         }
@@ -60,12 +61,11 @@ public class WaveSpawner : MonoBehaviour
     {
         _enemiesKilledPerWave = 0;
         _totalEnemiesPerWave = 0;
-        if (_waveIndex == _waveData.Length - 1)
-        {
-            _startWaveButton.gameObject.SetActive(false);
-        }
         WaveData waveData = _waveData[_waveIndex];
-        _gamePlayUI.UpdateWaveText(_waveIndex + 1, _waveData.Length);
+        if(_waveIndex > 0)
+        {
+            _gamePlayUI.UpdateWaveText(_waveIndex + 1, _waveData.Length);
+        }
         foreach (EnemyData enemyData in waveData.GetEnemyDataList())
         {
             _totalEnemiesPerWave += enemyData.GetEnemyCount();

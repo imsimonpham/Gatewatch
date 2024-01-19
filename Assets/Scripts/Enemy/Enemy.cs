@@ -10,8 +10,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject _groundPoint;
     
     [SerializeField] private Image _healthBarImg;
-    private float _target;
-    private float _reduceSpeed = 1f;
     private PlayerStats _playerStats;
     private WaveSpawner _waveSpawner;
     

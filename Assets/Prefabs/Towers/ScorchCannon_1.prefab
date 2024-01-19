@@ -295,9 +295,10 @@ GameObject:
   - component: {fileID: 8123255399877155238}
   - component: {fileID: 2397897846960566045}
   - component: {fileID: 1714008011972288626}
+  - component: {fileID: -3442710440746542659}
   m_Layer: 0
   m_Name: ScorchCannon_1
-  m_TagString: Tower
+  m_TagString: AOETower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -355,6 +356,18 @@ MonoBehaviour:
   _range: 13
   _rotationSpeed: 10
   _horizontalRotator: {fileID: 623351340547466408}
+--- !u!114 &-3442710440746542659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4688099533234135808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 247708909d6406c47a8d45c9a54c1f79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4987414785178169198
 GameObject:
   m_ObjectHideFlags: 0

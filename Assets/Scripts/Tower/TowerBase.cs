@@ -5,6 +5,7 @@ public class TowerBase : MonoBehaviour
 {
    [SerializeField] private GameObject _towerPlacementArea;
    [SerializeField] private GameObject _existingTower;
+   [SerializeField] private GameObject _targetShadow;
    private BuildManager _buildManager;
    private PlayerStats _playerStats;
    private GamePlayUI _gamePlayUI;
@@ -61,11 +62,6 @@ public class TowerBase : MonoBehaviour
       }
    }
 
-   void Update()
-   {
-      
-   }
-
    public bool CanBuildHere()
    {
       //return false if haven't selected a tower to build
@@ -106,7 +102,6 @@ public class TowerBase : MonoBehaviour
       {
          return false;
       }
-
       return true;
    }
 
@@ -118,13 +113,20 @@ public class TowerBase : MonoBehaviour
          _existingTowerBlueprint = null;
          return;
       }
-      GameObject tower = Instantiate(towerBlueprint.GetPrefabLv1(), _towerPlacementArea.transform.position,
+      GameObject towerGO = Instantiate(towerBlueprint.GetPrefabLv1(), _towerPlacementArea.transform.position,
          Quaternion.identity);
       _playerStats.SpendEnergy(towerBlueprint.GetBuildCost());
-      _existingTower = tower;
+      _existingTower = towerGO;
       _towerLevel = 1;
-      _buildManager.ClearTowerToBuld();
-   }
+      _buildManager.ClearTowerToBuild();
+
+       //Set Tower base for the newly built tower
+       if (_existingTower.CompareTag("AOETower"))
+       {
+         Tower tower = _existingTower.GetComponent<Tower>();
+         tower.SetTargetShadow(_targetShadow);
+       }
+    }
 
    public void UpgradeExistingTower()
    {
@@ -136,12 +138,19 @@ public class TowerBase : MonoBehaviour
             return;
          }
          _towerLevel = 2;
-         Debug.Log("Upgrade to level 2");
+         //Debug.Log("Upgrade to level 2");
          newTowerPrefab = _existingTowerBlueprint.GetPrefabLv2();
          Destroy(_existingTower);
-         GameObject tower = Instantiate(newTowerPrefab, _towerPlacementArea.transform.position, Quaternion.identity);
+         GameObject towerGO = Instantiate(newTowerPrefab, _towerPlacementArea.transform.position, Quaternion.identity);
          _playerStats.SpendEnergy(_existingTowerBlueprint.GetUpgradeCostToLv2());
-         _existingTower = tower;
+         _existingTower = towerGO;
+
+        //Set Tower base for the newly upgraded tower
+        if (_existingTower.CompareTag("AOETower"))
+        {
+            Tower tower = _existingTower.GetComponent<Tower>();
+            tower.SetTargetShadow(_targetShadow);
+        }
       }
       else if (_towerLevel == 2)
       {
@@ -150,14 +159,20 @@ public class TowerBase : MonoBehaviour
             return;
          }
          _towerLevel = 3;
-         Debug.Log("Upgrade to level 3");
+         //Debug.Log("Upgrade to level 3");
          newTowerPrefab = _existingTowerBlueprint.GetPrefabLv3();
          Destroy(_existingTower);
-         GameObject tower = Instantiate(newTowerPrefab, _towerPlacementArea.transform.position, Quaternion.identity);
+         GameObject towerGO = Instantiate(newTowerPrefab, _towerPlacementArea.transform.position, Quaternion.identity);
          _playerStats.SpendEnergy(_existingTowerBlueprint.GetUpgradeCostToLv3());
-         _existingTower = tower;
-      }
+         _existingTower = towerGO;
 
+         //Set Tower base for the newly upgraded tower
+         if (_existingTower.CompareTag("AOETower"))
+         {
+            Tower tower = _existingTower.GetComponent<Tower>();
+            tower.SetTargetShadow(_targetShadow);
+         }
+       }
       _towerBaseUICanvas.enabled = false;
    }
 

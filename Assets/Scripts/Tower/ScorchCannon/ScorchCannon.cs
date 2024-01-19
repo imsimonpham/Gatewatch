@@ -6,19 +6,29 @@ public class ScorchCannon : MonoBehaviour
     [SerializeField] private float _range = 10f;
     [SerializeField] private float _rotationSpeed = 10f;
     [SerializeField] private GameObject _horizontalRotator;
-    
+
     private string _airEnemyTag = "AirEnemy";
     private string _groundEnemyTag = "GroundEnemy";
 
-    void Update()
+    private GameObject _targetShadow;
+    private Tower _towerScript;
+    private bool _haveATarget;
+
+    private void Start()
     {
-        ScanForTargets();
-        if(_target == null)
+        InvokeRepeating("ScanForTargets", 0f, 0.1f);
+        _towerScript = GetComponent<Tower>();
+        if (_towerScript == null)
         {
-            return;
+            Debug.LogError("Tower Script is  null");
         }
-        RotateToTarget();
+        _targetShadow = _towerScript.GetTargetShadow();
+        if (_targetShadow == null)
+        {
+            Debug.LogError("Target Shadow is  null");
+        }
     }
+
 
     private void ScanForTargets()
     {
@@ -32,7 +42,7 @@ public class ScorchCannon : MonoBehaviour
         //Detect the enemies within range
         foreach (Collider collider in colliders)
         {
-            if (collider.CompareTag(_groundEnemyTag) || collider.CompareTag(_airEnemyTag))
+            if (collider.CompareTag(_groundEnemyTag))
             {
                 Enemy enemy = collider.GetComponent<Enemy>();
                 int enemyIndex = enemy.GetEnemyIndex();
@@ -45,13 +55,18 @@ public class ScorchCannon : MonoBehaviour
             }
         }
 
+        //set target to be the prioritized enemy and set target shadow to follow it
         if (prioritizedEnemy != null)
         {
             _target = prioritizedEnemy;
+            _targetShadow.transform.position = _target.GetComponent<Enemy>().GetGroundPoint().transform.position;
+            _haveATarget = true;
+            RotateToTarget();
         }
         else
         {
             _target = null;
+            _haveATarget = false;
         }
     }
 
@@ -64,22 +79,19 @@ public class ScorchCannon : MonoBehaviour
     }
     
     
-    /*void OnDrawGizmos()
-    {
-        if(_target != null) { 
-            Gizmos.color = Color.red;      
-            Gizmos.DrawLine(_targetPointer.transform.position, _target.transform.position);
-        }
-    }*/
-    
     void OnDrawGizmosSelected()
     {
         Gizmos.color = new Color32(255, 240, 142, 100);
         Gizmos.DrawSphere(transform.position, _range);
     }
 
-    public GameObject GetTarget()
+    public GameObject GetTargetShadowFromTowerBase()
     {
-        return _target;
+        return _targetShadow;
+    }
+
+    public bool HaveATarget()
+    {
+        return _haveATarget;
     }
 }

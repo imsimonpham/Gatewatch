@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1181bccc355f21b40b979a87a006ff5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectilePrefab: {fileID: 5735689639701472063, guid: e2740dc2a8d67c84c931a87d0608117d,
+  _projectilePrefab: {fileID: 2797374867718902837, guid: 3a0ca11a21a694d46977787503551d5b,
     type: 3}
   _fireRate: 2
   _firePoints:
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 99979421509534734}
   m_Layer: 0
   m_Name: GunTurret_3
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -287,7 +287,7 @@ Transform:
   m_Children:
   - {fileID: 4468621227079456192}
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1425432496014234521
 BoxCollider:
@@ -457,7 +457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1181bccc355f21b40b979a87a006ff5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectilePrefab: {fileID: 5735689639701472063, guid: e2740dc2a8d67c84c931a87d0608117d,
+  _projectilePrefab: {fileID: 2797374867718902837, guid: 3a0ca11a21a694d46977787503551d5b,
     type: 3}
   _fireRate: 2
   _firePoints:
@@ -659,7 +659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1181bccc355f21b40b979a87a006ff5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectilePrefab: {fileID: 5735689639701472063, guid: e2740dc2a8d67c84c931a87d0608117d,
+  _projectilePrefab: {fileID: 2797374867718902837, guid: 3a0ca11a21a694d46977787503551d5b,
     type: 3}
   _fireRate: 2
   _firePoints:

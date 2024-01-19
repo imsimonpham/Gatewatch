@@ -40,7 +40,7 @@ public class GunTurretBarrel : MonoBehaviour
         foreach (GameObject firePoint in _firePoints)
         {
             GameObject projectileGO = Instantiate(_projectilePrefab, firePoint.transform.position, _target.transform.rotation);
-            GameObject muzzleFlashGO = Instantiate(_muzzleFlashPrefab, firePoint.transform.position, transform.rotation);
+            GameObject muzzleFlashGO = Instantiate(_muzzleFlashPrefab, firePoint.transform.position, (_target.transform.rotation * Quaternion.Euler(0, -90, 0)));
             projectileGO.transform.parent = _bulletContainer.transform;
             muzzleFlashGO.transform.parent = _bulletContainer.transform;
             GunTurretProjectile projectile = projectileGO.GetComponent<GunTurretProjectile>();

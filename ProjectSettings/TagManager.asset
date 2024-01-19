@@ -24,6 +24,8 @@ TagManager:
   - Environment
   - BurnEffect
   - Bullet
+  - TargetShadow
+  - AOETower
   layers:
   - Default
   - TransparentFX

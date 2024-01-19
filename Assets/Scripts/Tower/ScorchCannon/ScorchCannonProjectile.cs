@@ -12,12 +12,13 @@ public class ScorchCannonProjectile : MonoBehaviour
     private string _groundTag = "Ground";
     private float _animation;
     private GameObject _firePoint;
-    private GameObject _target;
+    //private GameObject _target;
     private GameObject _bulletContainer;
     private Vector3 _lastPos;
     private Vector3 _pos;
     [SerializeField] private float _height;
     [SerializeField] private float _maxDistance;
+    private GameObject _targetShadow;
     void Start()
     {
         _bulletContainer = GameObject.FindWithTag("BulletContainer");
@@ -29,22 +30,12 @@ public class ScorchCannonProjectile : MonoBehaviour
 
     void Update()
     {
-        if (_target != null)
-        {
-            _pos = _target.transform.position;
-            _lastPos = _pos;
-            FollowParabolicArc(_lastPos);
-        }
-        else
-        {
-            _pos = _lastPos;
-            FollowParabolicArc(_pos);
-        }
+        TriggerExplosion();
     }
 
-    public void SeekTarget(GameObject target)
+    public void SeekTargetShadow(GameObject targetShadow)
     {
-        _target = target;
+        _targetShadow = targetShadow;
     }
 
     public void SetFirePoint(GameObject firePoint)
@@ -52,38 +43,38 @@ public class ScorchCannonProjectile : MonoBehaviour
         _firePoint = firePoint;
     }
 
-    private void OnTriggerEnter(Collider other)
+    void TriggerExplosion()
     {
-        if (!other.gameObject.CompareTag(_groundEnemyTag))
-        {
-            Destroy(gameObject);
-        }
-        else
+        FollowParabolicArc(_targetShadow.transform.position);
+        float distance = Vector3.Distance(_targetShadow.transform.position, transform.position);
+        if (distance <= 1f)
         {
             AOEDamage();
-            Enemy enemy = other.GetComponent<Enemy>();
-            if (enemy != null)
-            {
-                GameObject groundPoint = enemy.GetGroundPoint();
-                Vector3 pos = new Vector3(groundPoint.transform.position.x, groundPoint.transform.position.y + 0.2f, groundPoint.transform.position.z);
-                Quaternion rot = groundPoint.transform.rotation;
-                InstantiateHitImpact(pos,rot);
-            }
+            InstantiateHitImpact();
             Destroy(gameObject);
         }
     }
-    
 
-    void InstantiateHitImpact(Vector3 pos, Quaternion rot)
+ 
+    void InstantiateHitImpact()
     {
-        GameObject impact = Instantiate(_hitImpactPrefab, pos,rot);
+        Vector3 pos = _targetShadow.transform.position + new Vector3(0f, 0.2f, 0f);
+        GameObject impact = Instantiate(_hitImpactPrefab, pos, Quaternion.identity);
         impact.transform.parent = _bulletContainer.transform;
+        Destroy(impact, 2f);
     }
 
     public void FollowParabolicArc(Vector3 pos)
     {
         _animation += Time.deltaTime * _speed;
-        transform.position = Parabola(_firePoint.transform.position, pos, _height, _animation);
+        if (_firePoint != null)
+        {
+            transform.position = Parabola(_firePoint.transform.position, pos, _height, _animation);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     private Vector3 Parabola (Vector3 start, Vector3 end, float height, float t)
     {

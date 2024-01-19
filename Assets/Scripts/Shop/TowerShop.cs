@@ -29,7 +29,7 @@ public class TowerShop : MonoBehaviour
         //Clear Tower To Build when clicking right mouse
         if (Input.GetMouseButtonDown(1))
         {
-            _buildManager.ClearTowerToBuld();
+            _buildManager.ClearTowerToBuild();
         }
 
         // destroy tower ghost when having no tower to build
@@ -44,7 +44,7 @@ public class TowerShop : MonoBehaviour
     
     public void SelectGunTurret()
     {
-        Debug.Log("Gun Turret selected");
+        //Debug.Log("Gun Turret selected");
         _buildManager.SetTowerToBuild(_gunTurret);
         if (_existingTowerGhost == null)
         {
@@ -54,7 +54,7 @@ public class TowerShop : MonoBehaviour
     
     public void SelectArtillery()
     {
-        Debug.Log("Artillery selected");
+        //Debug.Log("Artillery selected");
         _buildManager.SetTowerToBuild(_artillery);
         if (_existingTowerGhost == null)
         {
@@ -64,7 +64,7 @@ public class TowerShop : MonoBehaviour
     
     public void SelectScorchCannon()
     {
-        Debug.Log("Scorch Cannon selected");
+        //Debug.Log("Scorch Cannon selected");
         _buildManager.SetTowerToBuild(_scorchCannon);
         if (_existingTowerGhost == null)
         {

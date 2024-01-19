@@ -14,7 +14,7 @@ public class BuildManager : MonoBehaviour
         _towerToBuild = tower;
     }
 
-    public void ClearTowerToBuld()
+    public void ClearTowerToBuild()
     {
         _towerToBuild = null;
     }

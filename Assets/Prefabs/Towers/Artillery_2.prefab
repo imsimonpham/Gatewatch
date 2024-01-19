@@ -676,9 +676,10 @@ GameObject:
   - component: {fileID: 4174773338827480233}
   - component: {fileID: 5112287944901953765}
   - component: {fileID: 804452078333399694}
+  - component: {fileID: 7518367211334607483}
   m_Layer: 0
   m_Name: Artillery_2
-  m_TagString: Untagged
+  m_TagString: AOETower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -697,7 +698,7 @@ Transform:
   m_Children:
   - {fileID: 1784882744747596139}
   m_Father: {fileID: 0}
-  m_RootOrder: 30
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4174773338827480233
 BoxCollider:
@@ -755,6 +756,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
   _range: 30
+--- !u!114 &7518367211334607483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7555198701633652751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 247708909d6406c47a8d45c9a54c1f79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8345448657966433805
 GameObject:
   m_ObjectHideFlags: 0
