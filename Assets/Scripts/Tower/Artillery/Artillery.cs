@@ -57,7 +57,7 @@ public class Artillery : MonoBehaviour
         if (prioritizedEnemy != null)
         {
             _target = prioritizedEnemy;
-            _targetShadow.transform.position = _target.GetComponent<Enemy>().GetGroundPoint().transform.position;
+            _targetShadow.transform.position = _target.GetComponent<Enemy>().GetTargetPoint().transform.position;
             _haveATarget = true;
         }
         else

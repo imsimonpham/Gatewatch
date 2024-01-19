@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 4072.3208, g: 3213.1138, b: 3499.2974, a: 1}
+  m_IndirectSpecularColor: {r: 4028.3638, g: 3191.0747, b: 3475.563, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2613,7 +2613,8 @@ MonoBehaviour:
   _health: 50
   _maxHealth: 4000
   _enemyEnergyWorth: 35
-  _groundPoint: {fileID: 1737007005}
+  _targetPoint: {fileID: 1737007005}
+  _waveIndex: 0
   _healthBarImg: {fileID: 1487397380}
 --- !u!4 &281361084
 Transform:
@@ -9691,34 +9692,25 @@ MonoBehaviour:
     - _enemyPath: 0
       _enemyPrefab: {fileID: 1069821035453567222, guid: 311783a1131677148a1a25f58fe338f8,
         type: 3}
-      _enemyCount: 12
+      _enemyCount: 5
       _enemySpawnRate: 1
+  - _enemyDataList:
     - _enemyPath: 0
       _enemyPrefab: {fileID: 7366049901009739423, guid: f809231db6fbacd449d46e63e1ce91c3,
         type: 3}
-      _enemyCount: 14
+      _enemyCount: 5
       _enemySpawnRate: 1
   - _enemyDataList:
     - _enemyPath: 0
       _enemyPrefab: {fileID: 1069821035453567222, guid: 311783a1131677148a1a25f58fe338f8,
         type: 3}
-      _enemyCount: 15
-      _enemySpawnRate: 1
-    - _enemyPath: 0
-      _enemyPrefab: {fileID: 7366049901009739423, guid: f809231db6fbacd449d46e63e1ce91c3,
-        type: 3}
-      _enemyCount: 13
+      _enemyCount: 5
       _enemySpawnRate: 1
   - _enemyDataList:
     - _enemyPath: 0
-      _enemyPrefab: {fileID: 1069821035453567222, guid: 311783a1131677148a1a25f58fe338f8,
-        type: 3}
-      _enemyCount: 12
-      _enemySpawnRate: 1
-    - _enemyPath: 0
       _enemyPrefab: {fileID: 7366049901009739423, guid: f809231db6fbacd449d46e63e1ce91c3,
         type: 3}
-      _enemyCount: 15
+      _enemyCount: 5
       _enemySpawnRate: 1
   _enemyContainer: {fileID: 232957205}
   _waveIndex: 0
@@ -14455,7 +14447,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1737007006}
   m_Layer: 12
-  m_Name: GroundPoint
+  m_Name: TargetPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14871,7 +14863,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1816347659}
   m_Layer: 12
-  m_Name: GroundPoint
+  m_Name: TargetPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19006,7 +18998,8 @@ MonoBehaviour:
   _health: 0
   _maxHealth: 50
   _enemyEnergyWorth: 35
-  _groundPoint: {fileID: 1816347658}
+  _targetPoint: {fileID: 1816347658}
+  _waveIndex: 0
   _healthBarImg: {fileID: 2752222074242207066}
 --- !u!1 &5127052348162791591
 GameObject:

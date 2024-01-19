@@ -7,7 +7,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _health;
     [SerializeField] private float _maxHealth;
     [SerializeField] private int _enemyEnergyWorth;
-    [SerializeField] private GameObject _groundPoint;
+    [SerializeField] private GameObject _targetPoint;
+    [SerializeField] private int _waveIndex;
     
     [SerializeField] private Image _healthBarImg;
     private PlayerStats _playerStats;
@@ -37,6 +38,17 @@ public class Enemy : MonoBehaviour
     {
         _enemyIndex = index;
     }
+
+    public void SetEnemyWaveIndex(int index)
+    {
+        _waveIndex = index;
+    }
+
+    public int GetEnemyWaveIndex()
+    {
+        return _waveIndex;
+    }
+
     public int GetEnemyIndex()
     {
         return _enemyIndex;
@@ -52,22 +64,27 @@ public class Enemy : MonoBehaviour
             Die();
         }
     }
-    
-
+   
     public void Die()
     {
-        _waveSpawner.CountEnemiesKilledPerWave();
+        Debug.Log("Wave Index Minus 1: " + (_waveSpawner.GetCurrentWaveIndex() - 1));
+        if (_waveSpawner.GetCurrentWaveIndex() - 1 == _waveIndex)
+        {
+            _waveSpawner.CountEnemiesKilledPerWave();
+        }
+        Debug.Log("Total Enemies Spawned: " + _waveSpawner.GetTotalEnemiesPerWave());
+        Debug.Log("Total Enemies Killed: " + _waveSpawner.GetEnemiesKilledPerWave());
         Destroy(gameObject);
     }
-    
+   
 
     void UpdateHealthBar()
     {
         _healthBarImg.fillAmount = _health/_maxHealth;
     }
 
-    public GameObject GetGroundPoint()
+    public GameObject GetTargetPoint()
     {
-        return _groundPoint;
+        return _targetPoint;
     }
 }

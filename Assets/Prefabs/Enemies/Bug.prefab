@@ -1223,7 +1223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 486003967094649158}
   m_Layer: 12
-  m_Name: GroundPoint
+  m_Name: TargetPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1603,7 +1603,7 @@ Transform:
   - {fileID: 6043420931067206411}
   - {fileID: 486003967094649158}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8771801954234908645
 MonoBehaviour:
@@ -1634,7 +1634,7 @@ MonoBehaviour:
   _health: 0
   _maxHealth: 80
   _enemyEnergyWorth: 10
-  _groundPoint: {fileID: 6807940695116170066}
+  _targetPoint: {fileID: 6807940695116170066}
   _healthBarImg: {fileID: 60884954667287970}
 --- !u!195 &8408282917301410772
 NavMeshAgent:

@@ -464,7 +464,7 @@ GameObject:
   - component: {fileID: 8607412314158067339}
   - component: {fileID: 2599711850196743010}
   m_Layer: 12
-  m_Name: GroundPoint
+  m_Name: TargetPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1084,7 +1084,7 @@ MonoBehaviour:
   _health: 0
   _maxHealth: 250
   _enemyEnergyWorth: 35
-  _groundPoint: {fileID: 2957343578036638556}
+  _targetPoint: {fileID: 2957343578036638556}
   _healthBarImg: {fileID: 672603260135842212}
 --- !u!114 &-80099639545169069
 MonoBehaviour:

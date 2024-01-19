@@ -120,13 +120,10 @@ public class TowerBase : MonoBehaviour
       _towerLevel = 1;
       _buildManager.ClearTowerToBuild();
 
-       //Set Tower base for the newly built tower
-       if (_existingTower.CompareTag("AOETower"))
-       {
-         Tower tower = _existingTower.GetComponent<Tower>();
-         tower.SetTargetShadow(_targetShadow);
-       }
-    }
+      //Set Tower base for the newly built tower
+      Tower tower = _existingTower.GetComponent<Tower>();
+      tower.SetTargetShadow(_targetShadow);
+   }
 
    public void UpgradeExistingTower()
    {
@@ -146,11 +143,8 @@ public class TowerBase : MonoBehaviour
          _existingTower = towerGO;
 
         //Set Tower base for the newly upgraded tower
-        if (_existingTower.CompareTag("AOETower"))
-        {
-            Tower tower = _existingTower.GetComponent<Tower>();
-            tower.SetTargetShadow(_targetShadow);
-        }
+        Tower tower = _existingTower.GetComponent<Tower>();
+        tower.SetTargetShadow(_targetShadow);
       }
       else if (_towerLevel == 2)
       {
@@ -166,12 +160,9 @@ public class TowerBase : MonoBehaviour
          _playerStats.SpendEnergy(_existingTowerBlueprint.GetUpgradeCostToLv3());
          _existingTower = towerGO;
 
-         //Set Tower base for the newly upgraded tower
-         if (_existingTower.CompareTag("AOETower"))
-         {
-            Tower tower = _existingTower.GetComponent<Tower>();
-            tower.SetTargetShadow(_targetShadow);
-         }
+        //Set Tower base for the newly upgraded tower
+        Tower tower = _existingTower.GetComponent<Tower>();
+        tower.SetTargetShadow(_targetShadow);
        }
       _towerBaseUICanvas.enabled = false;
    }

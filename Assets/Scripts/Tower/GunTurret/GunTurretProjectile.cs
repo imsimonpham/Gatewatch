@@ -1,10 +1,12 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class GunTurretProjectile : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _dmg;
-    private GameObject _target;
+    private GameObject _targetShadow;
+    [SerializeField]  private float _dmgRadius;
     [SerializeField] private GameObject _hitImpactPrefab;
     private GameObject _bulletContainer;
     private string _airEnemyTag = "AirEnemy";
@@ -21,34 +23,49 @@ public class GunTurretProjectile : MonoBehaviour
 
     void Update()
     {
-        if (_target == null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Vector3 dir = _target.transform.position - transform.position;
-        transform.Translate(dir.normalized * Time.deltaTime * _speed, Space.World); 
+        HitTarget();
     }
 
-    public void SeekTarget(GameObject target)
+    void HitTarget()
     {
-        _target = target;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag(_airEnemyTag) || other.gameObject.CompareTag(_groundEnemyTag))
+        Vector3 dir = _targetShadow.transform.position - transform.position;
+        transform.Translate(dir.normalized * Time.deltaTime * _speed, Space.World);
+        float distance = Vector3.Distance(_targetShadow.transform.position, transform.position);
+        if (distance <= 0.5f)
         {
-            Enemy enemy = other.GetComponent<Enemy>();
-            enemy.TakeDamage(_dmg);
+            DealDamage();
             InstantiateHitImpact();
             Destroy(gameObject);
         }
+    }
+
+    public void DealDamage()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _dmgRadius);
+        foreach (Collider collider in colliders)
+        {
+            if (collider.CompareTag(_groundEnemyTag) || collider.CompareTag(_airEnemyTag))
+            {
+                Enemy enemy = collider.GetComponent<Enemy>();
+                enemy.TakeDamage(_dmg);
+            }
+        }
+    }
+
+    public void SeekTargetShadow(GameObject targetShadow)
+    {
+        _targetShadow = targetShadow;
     }
     
     void InstantiateHitImpact()
     {
         GameObject impact = Instantiate(_hitImpactPrefab, transform.position, Quaternion.identity);
         impact.transform.parent = _bulletContainer.transform;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = new Color32(255, 240, 142, 20);
+        Gizmos.DrawSphere(transform.position, _dmgRadius);
     }
 }

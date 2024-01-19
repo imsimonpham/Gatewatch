@@ -51,7 +51,7 @@ public class TowerManager : MonoBehaviour
                     UpdateTowerUpgradeCostText(_selectedTowerBase);
                     ShowTowerBaseUI(towerBase.GetTowerUIPosition());
                     _selectedTowerBase.UpdateUpgradeButtonState();
-                    Debug.Log(_selectedTowerBase.GetTowerLevel());
+                    //Debug.Log(_selectedTowerBase.GetTowerLevel());
                 } 
             }
         } 

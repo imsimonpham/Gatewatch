@@ -7,7 +7,7 @@ public class ScorchCannonBarrel : MonoBehaviour
     [SerializeField] private GameObject _firePoint; 
     private float _canFire = 0f;
     [SerializeField] private ScorchCannon _mainTower;
-    //private GameObject _target;
+
     private GameObject _bulletContainer;
     [SerializeField] private float _delayTime;
     [SerializeField] private GameObject _muzzleFlashPrefab;

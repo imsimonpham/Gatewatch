@@ -51,9 +51,15 @@ public class WaveSpawner : MonoBehaviour
             StartCoroutine(SpawnWave());
         }
 
-        if (_enemiesKilledPerWave >= _totalEnemiesPerWave * 0.5f && _waveIndex < _waveData.Length)
+
+        if (_enemiesKilledPerWave >= _totalEnemiesPerWave * 0.5f )
         {
             _startWaveButton.gameObject.SetActive(true);
+        }
+
+        if (_waveIndex + 1 > _waveData.Length)
+        {
+            _startWaveButton.gameObject.SetActive(false);
         }
     }
 
@@ -143,6 +149,7 @@ public class WaveSpawner : MonoBehaviour
             
         Enemy enemy = Instantiate(enemyPrefab,spawnPos, spawnRotation).GetComponent<Enemy>();
         enemy.SetEnemyIndex(_enemyIndex);
+        enemy.SetEnemyWaveIndex(_waveIndex);
         enemy.transform.parent = _enemyContainer.transform;
         
         //enemy move to endpoint
@@ -162,5 +169,20 @@ public class WaveSpawner : MonoBehaviour
     public void StartWave()
     {
         _startWave = true;
+    }
+
+    public int GetCurrentWaveIndex()
+    {
+        return _waveIndex;
+    }
+
+    public int GetTotalEnemiesPerWave()
+    {
+        return _totalEnemiesPerWave;
+    }
+
+    public int GetEnemiesKilledPerWave()
+    {
+        return _enemiesKilledPerWave;
     }
 }

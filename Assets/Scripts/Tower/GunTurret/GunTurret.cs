@@ -7,19 +7,27 @@ public class GunTurret : MonoBehaviour
     [SerializeField] private float _rotationSpeed = 10f;
     [SerializeField] private GameObject _horizontalRotator;
     [SerializeField] private GameObject _verticalRotator;
-    //[SerializeField] private GameObject _targetPointer;
     
     private string _airEnemyTag = "AirEnemy";
     private string _groundEnemyTag = "GroundEnemy";
 
-    void Update()
+    private GameObject _targetShadow;
+    private Tower _towerScript;
+    private bool _haveATarget;
+
+    private void Start()
     {
-        ScanForTargets();
-        if(_target == null)
+        InvokeRepeating("ScanForTargets", 0f, 0.05f);
+        _towerScript = GetComponent<Tower>();
+        if (_towerScript == null)
         {
-            return;
+            Debug.LogError("Tower Script is  null");
         }
-        RotateToTarget();
+        _targetShadow = _towerScript.GetTargetShadow();
+        if (_targetShadow == null)
+        {
+            Debug.LogError("Target Shadow is  null");
+        }
     }
 
     private void ScanForTargets()
@@ -47,19 +55,24 @@ public class GunTurret : MonoBehaviour
             }
         }
 
+        //set target to be the prioritized enemy and set target shadow to follow it
         if (prioritizedEnemy != null)
         {
             _target = prioritizedEnemy;
+            _targetShadow.transform.position = _target.GetComponent<Enemy>().GetTargetPoint().transform.position + new Vector3(0, 0.5f, 0);
+            _haveATarget = true;
+            RotateToTarget();
         }
         else
         {
             _target = null;
+            _haveATarget = false;
         }
     }
 
     private void RotateToTarget()
     {
-        Vector3 dir = _target.transform.position - transform.position;
+        Vector3 dir = _targetShadow.transform.position - transform.position;
         Quaternion lookToRotation = Quaternion.LookRotation(dir);
         Vector3 horizontalRotation = Quaternion.Lerp(_horizontalRotator.transform.rotation, lookToRotation, _rotationSpeed * Time.deltaTime).eulerAngles;
         Vector3 verticalRotation = Quaternion.Lerp(_verticalRotator.transform.rotation, lookToRotation, _rotationSpeed * Time.deltaTime).eulerAngles;
@@ -82,8 +95,12 @@ public class GunTurret : MonoBehaviour
         Gizmos.DrawSphere(transform.position, _range);
     }
 
-    public GameObject GetTarget()
+    public GameObject GetTargetShadowFromTowerBase()
     {
-        return _target;
+        return _targetShadow;
+    }
+    public bool HaveATarget()
+    {
+        return _haveATarget;
     }
 }

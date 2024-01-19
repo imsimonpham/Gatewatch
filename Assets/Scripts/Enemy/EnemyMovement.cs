@@ -4,20 +4,13 @@ using UnityEngine.AI;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent _agent;
-    private WaveSpawner _waveSpawner;
     private string _endPointTag = "EndPoint";
     private GamePlayUI _gamePlayUI;
     private PlayerStats _playerStats;
     private GameManager _gameManager;
     
     void Start()
-    {
-        _waveSpawner = GameObject.FindWithTag("WaveSpawner").GetComponent<WaveSpawner>();
-        if (_waveSpawner == null)
-        {
-            Debug.LogError("Wave Spawner is null");
-        }
-        
+    {        
         _gamePlayUI = GameObject.FindWithTag("GamePlayUI").GetComponent<GamePlayUI>();
         if (_gamePlayUI == null)
         {
@@ -46,7 +39,6 @@ public class EnemyMovement : MonoBehaviour
     {
         if (other.CompareTag(_endPointTag))
         {
-            _waveSpawner.CountEnemiesKilledPerWave();
             _playerStats.ReduceLives();
             if (_playerStats.GetLives() <= 0)
             {

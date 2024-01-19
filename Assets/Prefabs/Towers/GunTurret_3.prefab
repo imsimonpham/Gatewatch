@@ -266,6 +266,7 @@ GameObject:
   - component: {fileID: 1425432496014234521}
   - component: {fileID: 1151185932936525585}
   - component: {fileID: 99979421509534734}
+  - component: {fileID: -410760209868709161}
   m_Layer: 0
   m_Name: GunTurret_3
   m_TagString: Tower
@@ -348,6 +349,18 @@ MonoBehaviour:
   _rotationSpeed: 10
   _horizontalRotator: {fileID: 8438562470991852355}
   _verticalRotator: {fileID: 9201998790721223347}
+--- !u!114 &-410760209868709161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3565014406353434396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 247708909d6406c47a8d45c9a54c1f79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3820687495031657239
 GameObject:
   m_ObjectHideFlags: 0
